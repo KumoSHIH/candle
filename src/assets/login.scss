@@ -1,0 +1,23 @@
+
+.loginImg{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('assets/images/login2.jpg');
+    background-position: center center;
+    background-size: cover;
+    opacity: .9;
+}
+
+// 登入
+label{
+    cursor: pointer;
+}
+.btnSignIn{
+    border: solid 2px $second;
+    color: $text-dark;
+    font-weight: bold;
+    &:hover{
+        background-color: lighten($second,20%);
+    }
+}
