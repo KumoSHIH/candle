@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-//import 'bootstrap';
+import 'bootstrap';
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
