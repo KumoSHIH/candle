@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+//import 'bootstrap';
+
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
