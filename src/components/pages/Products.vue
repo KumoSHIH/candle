@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- Loading 效果 -->   
+    <loading :active.sync="isLoading"></loading>
+
+    <!-- 產品表格 -->
     <div class="text-right mt-4">
       <div class="btn btn-main" @click="openModal(true)">建立新的產品</div>
     </div>
@@ -15,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, key) in products" :key="item.id">
+        <tr v-for="item in products" :key="item.id">
           <td>{{item.category}}</td>
           <td>{{item.title}}</td>
           <td class="text-right">{{item.origin_price}}</td>
@@ -50,16 +54,18 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="image">輸入圖片網址</label>
-                  <input type="text" class="form-control" id="image" placeholder="請輸入圖片連結">
+                  <input type="text" class="form-control" id="image" placeholder="請輸入圖片連結"
+                  v-model="tempProduct.imageUrl">
                 </div>
                 <div class="form-group">
                   <label for="customFile">
                     或 上傳圖片
-                    <i class="fas fa-spinner fa-spin"></i>
+                    <i class="fas fa-cog fa-spin" v-if="status.fileUploading"></i>
                   </label>
-                  <input type="file" id="customFile" class="form-control" ref="files">
+                  <input type="file" id="customFile" class="form-control" ref="files"
+                  @change="uploadFile">
                 </div>
-                <img
+                <img :src="tempProduct.imageUrl"
                   img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
                   class="img-fluid"
                   alt
@@ -166,6 +172,10 @@ export default {
       products: [], //儲存新增的資料
       tempProduct: {}, //productModal要送出的欄位內容
       isNew: false,
+      isLoading: false, //Loading
+      status: {
+        fileUploading: false,
+      }
     };
   },
   methods: {
@@ -173,8 +183,11 @@ export default {
       //取得遠端資料
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
       const vm = this;
+      vm.isLoading = true; //loading 效果1
       this.$http.get(api).then(response => {
         console.log(response.data);
+        vm.isLoading = false; //取完資料改回false
+
         vm.products = response.data.products;
       });
     },
@@ -224,7 +237,32 @@ export default {
                 $("#delProductModal").modal("hide");
             }
         });
-    }
+    },
+    uploadFile(){
+      console.log(this);
+      const uploadedFile = this.$refs.files.files[0]; //取出檔案
+      const vm = this;
+      const formData = new FormData();//模擬表單傳送之方法: 新增一空物件
+      formData.append('file-to-upload', uploadedFile); //加入
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;
+
+      vm.status.fileUploading = true; //loading 效果2
+
+      this.$http.post(url, formData, { //還要傳物件 因為FormData的格式關係
+        headers:{
+          'Content-type': 'multipart/form-data'  
+        },
+      }).then((response) => {
+        console.log(response.data);
+        vm.status.fileUploading = false; //AJAX結束改回false
+
+        if(response.data.success){
+          // vm.tempProduct.imageUrl = response.data.imageUrl;
+          // console.log(vm.tempProduct);
+          vm.$set(vm.tempProduct, 'imageUrl', response.data.imageUrl);//強制寫入欄位
+        }
+      });
+    },
   },
   created() {
     this.getProducts();

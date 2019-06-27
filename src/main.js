@@ -4,7 +4,8 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'bootstrap';
-
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,8 @@ import router from './router';
 Vue.config.productionTip = false;
 Vue.use(VueAxios,axios);
 axios.defaults.withCredentials = true;
+
+Vue.component("Loading", Loading); //全域方式載入此元件
 
 library.add(faSignInAlt,faUserPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
