@@ -11,8 +11,10 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import App from './App';
 import router from './router';
+import './bus';
 
 
 Vue.config.productionTip = false;

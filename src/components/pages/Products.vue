@@ -37,6 +37,7 @@
         </tr>
       </tbody>
     </table>
+    <Pagination :pageNum="pagination" @getPage="getProducts" ></Pagination>
     <!-- 新增產品Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-lg" role="document">
@@ -165,8 +166,12 @@
 <script>
 //ESLint 使用 /* global $ */
 import $ from "jquery";
+import Pagination from "../Pagination";
 
 export default {
+  components:{
+    Pagination,    
+  },
   data() {
     return {
       products: [], //儲存新增的資料
@@ -175,13 +180,14 @@ export default {
       isLoading: false, //Loading
       status: {
         fileUploading: false,
-      }
+      },
+      pagination: {}, 
     };
   },
   methods: {
-    getProducts() {
+    getProducts(page = 1) {
       //取得遠端資料
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
       const vm = this;
       vm.isLoading = true; //loading 效果1
       this.$http.get(api).then(response => {
@@ -189,6 +195,7 @@ export default {
         vm.isLoading = false; //取完資料改回false
 
         vm.products = response.data.products;
+        vm.pagination = response.data.pagination; //把pagination變數存進來 
       });
     },
     openModal(isNew, item) { //傳入參數
@@ -260,6 +267,9 @@ export default {
           // vm.tempProduct.imageUrl = response.data.imageUrl;
           // console.log(vm.tempProduct);
           vm.$set(vm.tempProduct, 'imageUrl', response.data.imageUrl);//強制寫入欄位
+          this.$bus.$emit('message:push', '圖片上傳成功', 'success');
+        }else{
+          this.$bus.$emit('message:push', response.data.message, 'danger'); //觸發外層的bus
         }
       });
     },
