@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-//import HelloWorld from '@/components/HelloWorld';
+
 import Dashboard from '@/components/Dashboard';
 import Login from '@/components/pages/Login';
 import Products from '@/components/pages/Products';
+import Orders from '@/components/pages/Orders';
+//import Tickets from '@/components/pages/Tickets';
+import CustomerOrder from '@/components/pages/CustomerOrders';
 
 Vue.use(Router)
 
@@ -13,12 +16,6 @@ export default new Router({
       path: '*',
       redirect: 'login',
     },
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld,
-    //   meta: { requiresAuth: true },//判斷之基準//路由元訊息
-    // },
     {
       path: '/login',
       name: 'Login',
@@ -34,7 +31,32 @@ export default new Router({
           name: 'Products',
           component: Products,
           meta: { requiresAuth: true },//確保進入此頁面之前是需要被驗證的
-        }
+        },
+        {
+          path: 'orders',
+          name: 'Orders',
+          component: Orders,
+          meta: { requiresAuth: true },
+        },
+        // {
+        //   path: 'tickets',
+        //   name: 'Tickets',
+        //   component: Tickets,
+        //   meta: { requiresAuth: true },
+        // },
+        
+      ]
+    },
+    {
+      path: '/',
+      name: 'Dashboard',
+      component: Dashboard,
+      children:[
+        {
+          path: 'customer_order',
+          name: 'CustomerOrder',
+          component: CustomerOrder,
+        },
       ]
     },
   ]

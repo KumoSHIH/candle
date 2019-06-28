@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App';
 import router from './router';
 import './bus';
+import currencyFilter from "./filters/currency";
 
 
 Vue.config.productionTip = false;
@@ -22,6 +23,7 @@ Vue.use(VueAxios,axios);
 axios.defaults.withCredentials = true;
 
 Vue.component("Loading", Loading); //全域方式載入此元件
+Vue.filter('currency', currencyFilter);
 
 library.add(faSignInAlt,faUserPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);

@@ -10,10 +10,28 @@
         >
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">登出</a>
+            <a class="nav-link" href="#" @click.prevent="signOut">登出</a>
             </li>
         </ul>
         </nav>
         
     </div>
 </template>
+
+<script>
+export default {
+    name: 'Navbar',
+    methods:{
+        signOut(){
+        const api = `${process.env.APIPATH}/logout`;
+        const vm = this;
+        this.$http.post(api).then((response) => {
+            console.log(response.data);
+            if(response.data.success){
+            vm.$router.push('/login'); //成功登出回到登入
+            }
+        });
+        },
+    },
+}
+</script>
