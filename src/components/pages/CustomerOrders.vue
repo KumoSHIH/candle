@@ -24,7 +24,8 @@
                         <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                         查看更多
                     </button>
-                    <button type="button" class="btn btn-outline-danger btn-sm ml-auto">
+                    <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
+                    @click="addCart(item.id)">
                         <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                         加到購物車
                     </button>
@@ -56,8 +57,8 @@
                             <div class="h4" v-if="product.price">現在只要 <strong class="text-danger">{{ product.price }}</strong> 元</div>
                         </div>
                         <select name="" class="form-control mt-3" v-model="product.num">
-                            <option >
-                                選購
+                            <option :value="num" v-for="num in 10" :key="num">
+                                選購 {{ num }} {{ product.unit }}
                             </option>
                         </select>
                     </div>
@@ -66,14 +67,45 @@
                         小計 <strong>{{ product.num * product.price }}</strong> 元
                         </div>
                         <button type="button" class="btn btn-primary"
-                        >
-                        <i class="fas fa-spinner fa-spin"></i>
+                        @click="addCart(product.id, product.num)">
+                        <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
                         加到購物車
                         </button>
                     </div>
                 </div>    
             </div>
-        </div>    
+        </div>  
+        
+        <!-- 購物車明細   -->
+        <hr>
+        <div class="container m-5">
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-6">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="60"></th>
+                                <th width="200">品名</th>
+                                <th width="80">數量</th>
+                                <th width="80">單價</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr v-for="item in cartDetail.carts" :key="item.id" class="">
+                                <td>
+                                    <button class="btn btn-outline-main"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                                <td>{{ item.product.title }}</td>
+                                <td>{{ item.qty }} {{ item.product.unit }}</td>
+                                <td class="text-right">{{ item.final_total | currency}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+
     </div>    
 </template>
 
@@ -88,7 +120,8 @@ export default {
             product: {}, //存放單一筆 Modal的資料   
             status:{  //判斷畫面上是哪一筆資料正在讀取中
                 loadingItem:'',
-            }  
+            },
+            cartDetail: [],    
         }
     },
     methods:{
@@ -97,7 +130,7 @@ export default {
             const vm = this;
             vm.isLoading = true; 
             this.$http.get(api).then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 vm.isLoading = false; 
                 vm.products = response.data.products;
             });
@@ -109,13 +142,40 @@ export default {
             this.$http.get(api).then(response => {
                 vm.product = response.data.product;
                 $('#productModal').modal('show');
-                console.log(response);
+                //console.log(response);
                 vm.status.loadingItem = '';  
+            });
+        },
+        addCart(id, qty = 1){
+            const vm = this;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            vm.status.loadingItem = id; 
+            const cart = {
+                product_id: id,
+                qty,
+            }
+            this.$http.post(api, { data:cart }).then(response => {
+                //console.log(response);
+                vm.status.loadingItem = ''; 
+                vm.getCart(); //重新取得購物車內容 
+                $('#productModal').modal('hide');
+            });
+        },
+        getCart(){
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            const vm = this;
+            vm.isLoading = true; 
+            this.$http.get(api).then(response => {
+                //console.log(response.data);
+                vm.isLoading = false;
+                vm.cartDetail = response.data.data;
+                console.log(vm.cartDetail);
             });
         },
     },
     created(){
         this.getOrders();
+        this.getCart();
     },
 }
 </script>
