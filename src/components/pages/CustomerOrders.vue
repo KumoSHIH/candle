@@ -116,19 +116,63 @@
                             
                         </tbody>
                     </table>
-                    <div class="input-group ">
+                    <!-- 套用優惠券 -->
+                    <div class="input-group mb-5">
                         <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary"
                             @click="addCouponCode">套用優惠碼</button>
-                        </div>
-                            
+                        </div> 
                     </div>
                 </div>
             </div>
-        </div>
-        
 
+            <!-- 訂單詳細資訊 -->
+            <div class="my-5 row justify-content-center">
+                <form class="col-md-6" @submit.prevent="createOrder">
+                    <div class="form-group">
+                        <label for="useremail">Email</label>
+                        <input type="email" class="form-control" name="email" id="useremail" placeholder="請輸入 Email"
+                        v-validate="'required|email'"> 
+                        <span class="text-danger" v-if="errors.has('email')">
+                            {{ errors.first('email') }}
+                        </span>
+                    </div>                            
+
+                    <div class="form-group">
+                        <label for="username">收件人姓名</label>
+                        <input type="text" class="form-control" name="name" id="username" placeholder="輸入姓名"
+                        :class="{'is-invalid': errors.has('name')}"
+                        v-validate="'required'">
+                        <span class="text-danger" v-if="errors.has('name')">姓名必須輸入</span>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label for="usertel">收件人電話</label>
+                        <input type="tel" class="form-control" id="usertel" name="tel" placeholder="請輸入電話"
+                        v-validate="'required'">
+                        <span class="text-danger" v-if="errors.has('tel')">電話必須輸入</span>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label for="useraddress">收件人地址</label>
+                        <input type="text" class="form-control" name="address" id="useraddress" placeholder="請輸入地址"
+                        v-validate="'required'">
+                        <span class="text-danger" v-if="errors.has('address')">地址欄位不得留空</span>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label for="comment">留言</label>
+                        <textarea name="" id="comment" class="form-control" cols="30" rows="10"></textarea>
+                    </div> 
+
+                    <div class="text-right">
+                        <button class="btn btn-danger">送出訂單</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>    
     </div>    
 </template>
 
@@ -146,6 +190,14 @@ export default {
             },
             cartDetail: [],  
             coupon_code: '',  
+            form:{
+                user:{
+                    name: '',
+                    email: '',
+                    tel: '',
+                    address: '',
+                }
+            },
         }
     },
     methods:{
@@ -219,6 +271,24 @@ export default {
                 vm.getCart();
             });
         },
+        createOrder(){
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
+            const vm = this;
+            const order = vm.form;
+
+            this.$validator.validate().then((valid) => {
+                if (valid) { //通過驗證才建立訂單
+                    this.$http.post(api,{ data: order }).then(response => {
+                        console.log('訂單已建立',response);
+                        vm.isLoading = false;
+                        //vm.getCart();
+                    });
+                }else{
+                    alert('欄位不完整')
+                }
+            });
+        },
+
     },
     created(){
         this.getOrders();

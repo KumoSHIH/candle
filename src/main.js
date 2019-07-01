@@ -6,6 +6,10 @@ import VueAxios from 'vue-axios';
 import 'bootstrap';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+//驗證
+import VeeValidate from 'vee-validate';
+import zhTW from 'vee-validate/dist/locale/zh_TW';
+import VueI18n from 'vue-i18n';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
@@ -21,6 +25,7 @@ import currencyFilter from "./filters/currency";
 Vue.config.productionTip = false;
 Vue.use(VueAxios,axios);
 axios.defaults.withCredentials = true;
+Vue.use(VueI18n);
 
 Vue.component("Loading", Loading); //全域方式載入此元件
 Vue.filter('currency', currencyFilter);
@@ -29,11 +34,22 @@ library.add(faSignInAlt,faUserPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 /* eslint-disable no-new */
+const i18n = new VueI18n({
+  locale: 'zhTW'
+});
+Vue.use(VeeValidate, {
+  i18n,
+  events: 'input|blur',
+  dictionary: {
+    zhTW
+  }
+});
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  i18n,
 });
 
 router.beforeEach((to, from, next) => {
