@@ -142,6 +142,7 @@
                     <div class="form-group">
                         <label for="username">收件人姓名</label>
                         <input type="text" class="form-control" name="name" id="username" placeholder="輸入姓名"
+                        v-model="form.user.name"
                         :class="{'is-invalid': errors.has('name')}"
                         v-validate="'required'">
                         <span class="text-danger" v-if="errors.has('name')">姓名必須輸入</span>
@@ -150,6 +151,7 @@
                     <div class="form-group">
                         <label for="usertel">收件人電話</label>
                         <input type="tel" class="form-control" id="usertel" name="tel" placeholder="請輸入電話"
+                        v-model="form.user.tel"
                         v-validate="'required'">
                         <span class="text-danger" v-if="errors.has('tel')">電話必須輸入</span>
                     </div>
@@ -157,17 +159,19 @@
                     <div class="form-group">
                         <label for="useraddress">收件人地址</label>
                         <input type="text" class="form-control" name="address" id="useraddress" placeholder="請輸入地址"
+                        v-model="form.user.address"
                         v-validate="'required'">
                         <span class="text-danger" v-if="errors.has('address')">地址欄位不得留空</span>
                     </div>
                             
                     <div class="form-group">
                         <label for="comment">留言</label>
-                        <textarea name="" id="comment" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="" id="comment" class="form-control" cols="30" rows="10"
+                        v-model="form.message"></textarea>
                     </div> 
 
                     <div class="text-right">
-                        <button class="btn btn-danger">送出訂單</button>
+                        <button class="btn btn-danger" >送出訂單</button>
                     </div>
                 </form>
             </div>
@@ -202,12 +206,10 @@ export default {
     },
     methods:{
         getOrders() {
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
             const vm = this;
-            vm.isLoading = true; 
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
             this.$http.get(api).then(response => {
                 //console.log(response.data);
-                vm.isLoading = false; 
                 vm.products = response.data.products;
             });
         },
@@ -238,53 +240,48 @@ export default {
             });
         },
         getCart(){
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
             const vm = this;
-            vm.isLoading = true; 
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
             this.$http.get(api).then(response => {
                 //console.log(response.data);
-                vm.isLoading = false;
                 vm.cartDetail = response.data.data;
                 console.log(vm.cartDetail);
             });
         },
         delCartItem(id){
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
             const vm = this;
-            vm.isLoading = true; 
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
             this.$http.delete(api).then(response => {
                 console.log(response);
-                vm.isLoading = false;
                 vm.getCart();
             });
         },
         addCouponCode(){
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
             const vm = this;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
             const coupon = {
                 code: vm.coupon_code
             };
-            vm.isLoading = true; 
-            this.$http.post(api,{ data: coupon }).then(response => {
+            this.$http.post(api,{ data: coupon }).then((response) => {
                 console.log(response);
-                vm.isLoading = false;
                 vm.getCart();
             });
         },
         createOrder(){
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
             const vm = this;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
             const order = vm.form;
 
             this.$validator.validate().then((valid) => {
-                if (valid) { //通過驗證才建立訂單
+                if (valid ) { //通過驗證才建立訂單
                     this.$http.post(api,{ data: order }).then(response => {
-                        console.log('訂單已建立',response);
-                        vm.isLoading = false;
-                        //vm.getCart();
+                        if(response.data.success){
+                            console.log('訂單已建立',response);
+                            vm.$router.push(`customer_checkout/${response.data.orderId}`);
+                        };
                     });
                 }else{
-                    alert('欄位不完整')
+                    alert('欄位不完整');
                 }
             });
         },
