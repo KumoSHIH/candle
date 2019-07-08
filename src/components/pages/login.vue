@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Nav/>
     <div class="loginImg"></div>
     <div class="container">
       <div class="row justify-content-center">
@@ -55,8 +56,13 @@
 </template>
 
 <script>
+import Nav from '../Nav';
+
 export default {
   name: "HelloWorld",
+  components:{
+    Nav,
+  },
   data() {
     return {
       user:{
@@ -82,8 +88,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    //@import "~bootstrap/scss/bootstrap";
-    //@import "../../assets/helpers/_variables.scss";
     @import "../../assets/_font.scss";
     //login background
     .loginImg{

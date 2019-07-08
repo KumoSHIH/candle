@@ -8,6 +8,8 @@ import Orders from '@/components/pages/Orders';
 import Coupon from '@/components/pages/Coupon';
 import CustomerOrder from '@/components/pages/CustomerOrders';
 import CustomerCheckout from '@/components/pages/CustomerCheckout';
+import Home from '@/components/pages/Home';
+import List from '@/components/pages/List';
 
 Vue.use(Router)
 
@@ -15,8 +17,29 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: 'login',
+      redirect: '/',
     },
+    {
+      path: '/',
+      name: "Home",
+      component: Home,
+      // children:[
+      //   {
+      //     path: '/list',
+      //     name: "List",
+      //     component: List,
+      //   },
+      // ]
+    },
+    {
+      path: '/list',
+      name: "List",
+      component: List,
+    },
+
+
+
+    
     {
       path: '/login',
       name: 'Login',
