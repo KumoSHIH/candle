@@ -3,25 +3,22 @@
         <ul class="nav proNav d-flex justify-content-end align-items-center">
             
             <li class="nav-item ">
-                <router-link class="nav-link" to="/list">ALL</router-link>
+                <router-link class="nav-link" to="/list">全部商品</router-link>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">新品上市</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">大豆系列</a>
+                <a class="nav-link" href="#">大豆蠟燭</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">水晶系列</a>
+                <a class="nav-link" href="#">水晶蠟燭</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">特色系列</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">材料專區</a>
+                <a class="nav-link" href="#">創意蠟燭</a>
             </li>
             <li class="nav-item mr-4">
-                <a class="nav-link" href="#">即將推出</a>
+                <a class="nav-link" href="#">香氛蠟燭</a>
             </li>
         </ul>
         

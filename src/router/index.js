@@ -10,6 +10,7 @@ import CustomerOrder from '@/components/pages/CustomerOrders';
 import CustomerCheckout from '@/components/pages/CustomerCheckout';
 import Home from '@/components/pages/Home';
 import List from '@/components/pages/List';
+import Cart from '@/components/pages/Cart';
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/list',
       name: "List",
       component: List,
+    },
+    {
+      path: '/cart',
+      name: "Cart",
+      component: Cart,
     },
 
 

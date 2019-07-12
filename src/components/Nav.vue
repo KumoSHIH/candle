@@ -24,7 +24,10 @@
                 </router-link>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+                <router-link class="nav-link" to="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-pill badge-danger" v-if="cart.length">{{ cart.length }}</span>
+                </router-link>
             </li>
             
         </ul>
@@ -64,5 +67,37 @@
         0% {opacity: .0; width: 0;}
         100% {opacity: .8; width: 150px;}
     }
-    
+    .badge{
+        position: relative;
+        top: -9px;
+        left: -6px;  
+    }
 </style>
+
+<script>
+export default {
+    data(){
+        return{
+            cart: [],
+        }
+    },
+    methods:{
+        getCart(){
+            const vm = this;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            vm.$http.get(api).then((response)=>{
+                //console.log(response.data);
+                vm.cart = response.data.data.carts;
+                //console.log(vm.cart);
+            })
+        },
+    },
+    created(){
+        const vm = this;
+        vm.getCart();
+        vm.$bus.$on('updateCart', ()=>{
+            vm.getCart();
+        })
+    },
+}
+</script>
