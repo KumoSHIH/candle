@@ -1,7 +1,6 @@
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
-        <Nav/>
         <div class="jumbotron banner">
             <div class="text-right mt-5">
                 <h1 class="display-3 text-dark">炎〞夏日，特賣優惠</h1>
@@ -117,12 +116,10 @@
 </style>
 
 <script>
-import Nav from '../Nav';
 import Card from '../Card';
 
 export default {
     components:{
-        Nav,
         Card,
     },
     data(){

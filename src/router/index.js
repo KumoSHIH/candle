@@ -8,9 +8,14 @@ import Orders from '@/components/pages/Orders';
 import Coupon from '@/components/pages/Coupon';
 import CustomerOrder from '@/components/pages/CustomerOrders';
 import CustomerCheckout from '@/components/pages/CustomerCheckout';
+//front
+import HomeRouter from '@/components/HomeRouter';//進入點
 import Home from '@/components/pages/Home';
 import List from '@/components/pages/List';
 import Cart from '@/components/pages/Cart';
+import CartAddress from '@/components/pages/CartAddress';
+import CartPay from '@/components/pages/CartPay';
+import CartFin from '@/components/pages/CartFin';
 
 Vue.use(Router)
 
@@ -22,29 +27,42 @@ export default new Router({
     },
     {
       path: '/',
-      name: "Home",
-      component: Home,
-      // children:[
-      //   {
-      //     path: '/list',
-      //     name: "List",
-      //     component: List,
-      //   },
-      // ]
+      name: "HomeRouter",
+      component: HomeRouter,
+      children:[
+        {
+          path: '/',
+          name: "Home",
+          component: Home,
+        },
+        {
+          path: 'list',
+          name: "List",
+          component: List,
+        },
+        {
+          path: 'cart',
+          name: "Cart",
+          component: Cart,
+        },
+        {
+          path: 'cart_address',
+          name: "CartAddress",
+          component: CartAddress,
+        },
+        {
+          path: 'cart_pay/:orderID',
+          name: "CartPay",
+          component: CartPay,
+        },
+        {
+          path: 'cart_fin',
+          name: "CartFin",
+          component: CartFin,
+        },
+      ]
     },
-    {
-      path: '/list',
-      name: "List",
-      component: List,
-    },
-    {
-      path: '/cart',
-      name: "Cart",
-      component: Cart,
-    },
-
-
-
+    
     
     {
       path: '/login',

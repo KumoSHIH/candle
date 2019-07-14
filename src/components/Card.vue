@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card border-0 mb-3">
+        <div class="card h-100 border-0 mb-3">
             <div class="img-top" :style="{ backgroundImage: `url(${cardItem.imageUrl})` }"></div>
             <div class="card-body">
                 <span class="badge badge-pill badge-info float-right p-2">{{cardItem.category}}</span>
@@ -72,6 +72,7 @@ export default {
                 //console.log(response);
                 vm.cartDetail = response.data.data;
                 console.log(vm.cartDetail);
+                vm.$bus.$emit('updateCart');
 
             })
         },

@@ -12,9 +12,9 @@
                         <th class="align-middle">{{item.product.title}}
                             <div class="text-success" v-if="item.coupon">已套用優惠券</div>
                         </th>
-                        <th width="5%">{{item.qty}}</th> 
+                        <th width="5%">{{item.qty}}{{item.product.unit}}</th> 
                         <th width="10%" >
-                            <div v-if="item.coupon" :class="{'delLine': item.coupon}">NT{{item.product.price | currency}}</div> 
+                            <div :class="{'delLine': item.coupon}">NT{{item.product.price | currency}}</div> 
                             <div class="text-danger" v-if="item.coupon">NT{{ item.final_total | currency }}</div>
                         </th>
                         <th width="5%">
@@ -37,7 +37,7 @@
                         <span class="h6">小計</span>
                         <span class="h6">NT{{ cart.total |currency }}</span>
                     </div>
-                    <div class="d-flex justify-content-between px-2">
+                    <div class="d-flex justify-content-between px-2" v-if="cart.final_total !== cart.total">
                         <span class="h6 text-danger">優惠券</span>
                         <span class="h6 text-danger">NT{{ cart.final_total |currency }}</span>
                     </div>
@@ -45,7 +45,9 @@
                         <span class="h5"><strong>總計</strong></span>
                         <span class="h5"><strong>NT{{ cart.final_total |currency }}</strong></span>
                     </div>
-                    <button class="btn btn-second w-100 py-2 mt-3">送出訂單 ></button>
+                    <router-link to="cart_address">
+                        <button class="btn btn-second w-100 py-2 mt-3">送出訂單 ></button>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -63,8 +65,6 @@
     .delLine{
         text-decoration: line-through;
     }
-  
-    
 </style>
     
 <script>
@@ -76,7 +76,7 @@ export default {
     },
     data(){
         return{
-            cart:{},
+            cart:[],
             isLoading: false,
             coupon_code: '',
         }
@@ -99,6 +99,7 @@ export default {
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
             vm.$http.delete(api).then((response)=>{
                 //console.log(response);
+                vm.$bus.$emit('updateCart');
                 vm.getCart();
             })
         },
@@ -109,7 +110,8 @@ export default {
                 code : vm.coupon_code
             }
             vm.$http.post(api, { data: coupon }).then((response)=>{
-                console.log(response);
+                //console.log(response);
+                vm.getCart();
             })
         },
     },
