@@ -2,7 +2,7 @@
     <div>
         <loading :active.sync="isLoading"></loading>
         <Nav/>
-        <div class="container pt-5">
+        <div class="cartWrap container pt-5">
             <div class="row">
                 <div class="col-md-8 mt-5">
                     <h3 class="text-center text-main bg-text-main py-2 mb-4">我的購物車</h3>
@@ -14,7 +14,7 @@
                         </th>
                         <th width="5%">{{item.qty}}{{item.product.unit}}</th> 
                         <th width="10%" >
-                            <div :class="{'delLine': item.coupon}">NT{{item.product.price | currency}}</div> 
+                            <div :class="{'delLine': item.coupon}">NT{{(item.product.price)*(item.qty) | currency}}</div> 
                             <div class="text-danger" v-if="item.coupon">NT{{ item.final_total | currency }}</div>
                         </th>
                         <th width="5%">
@@ -55,6 +55,10 @@
 </template>
 
 <style lang="scss" scoped>
+    
+    .cartWrap{
+        min-height: calc(100vh - 280px);
+    }
     .itemImg{
         width: 150px;
         height: 100px;

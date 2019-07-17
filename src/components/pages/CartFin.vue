@@ -4,7 +4,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="wrap col-md-4">
                     <div class="row no-gutters flex-column">
-                        <div class="col-md-12 mt-4">
+                        <div class="col mt-4">
                             <h2 class="text-center text-main mt-5"><strong>訂購完成</strong></h2>
                             <div class="step-wrap d-flex justify-content-between mt-4">
                                 <div class="step1"><i class="fas fa-check success"></i></div>
@@ -13,8 +13,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 text-center mt-4">
-                            <h3 class="text-main">感謝您的購買！<br>商品將會在2~6個工作天內送達！</h3>
+                        <div class="col text-center mt-4">
+                            <h4 class="text-main">感謝您的購買！<br>商品將會在2~6個工作天內送達！</h4>
                             <router-link to="/">
                                 <button class="btn btn-main my-4 ">回到首頁</button>
                             </router-link>
@@ -50,12 +50,3 @@
 </style>
 
 
-<script>
-
-
-export default {
-    components:{
-        
-    }
-}
-</script>

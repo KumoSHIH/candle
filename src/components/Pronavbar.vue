@@ -9,7 +9,9 @@
                 <a class="nav-link" href="#">新品上市</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">大豆蠟燭</a>
+                <a class="nav-link" href="/list"
+                :class="{'active': listItem === '大豆蠟燭'}"
+                @click.prevent="filterItem('大豆蠟燭')">大豆蠟燭</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">水晶蠟燭</a>
@@ -30,25 +32,39 @@
         position: fixed;
         top: 50px;
         width: 100%;
-        height: 50px;
+        height: 60px;
         background-color: #000;
         z-index: 99;
-        //opacity: .8;
+        opacity: .7;
+        transition: .2s;
+        &:hover{
+            opacity: 1;
+        }
         .nav-link{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
+            float: left;
             width: 120px;
-            height: 50px;
+            height: 30px;
             text-align: center;
             
             color: #fff;
             transition: .2s;
-            &:hover{
-                background-color: #fdef96;
-                color: #574f7d;
-            }
+        }
+        .nav-link::after{
+            content:'';
+            display: block;
+            clear: both;
+            width: 0%;
+            border-bottom: solid 2px #fdef96;
+
+            margin: auto;
+            position: relative;
+            top: 5px;
+            transition: .3s;
+            
+        }
+        .nav-link:hover::after{
+            width: 100%;
+            
         }
     }
     .navHide{
@@ -83,6 +99,51 @@ $(document).scroll(function(e){
 
 
 export default {
-   
+    data(){
+        return{
+            products: [],
+            listItem: '',
+            filterData: {},
+        }
+    },
+    methods: {
+        getProduct(){
+            const vm = this;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+            vm.isLoading = true;
+            vm.$http.get(api).then((response) =>{
+                //console.log(response.data);
+                vm.products = response.data.products;
+                //console.log(vm.products);
+                if(vm.listItem === '全部商品'){
+                    vm.filteredData = Object.assign({}, vm.products);
+                }else{
+                    vm.filteredData = vm.products.filter(function(item){
+                        if(item.category === vm.listItem){
+                            return true;
+                        }
+                    });
+                };
+                vm.isLoading = false;
+            });
+            
+        },
+        filterItem(name){
+            const vm = this;
+            //vm.$router.push('/list');
+            vm.listItem = name;
+            vm.getProduct(vm.filterName);
+            console.log(vm.filteredData);
+            vm.$bus.$on('toCategory', ()=>{
+                vm.getProduct();
+                
+            });
+            vm.$router.push('/list');
+            
+        }
+    },
+    created(){
+        this.getProduct();
+    },
 }
 </script>

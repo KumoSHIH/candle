@@ -101,7 +101,7 @@
                     </table>
                 </div>
                 
-                <button class="col-md-7 btn btn-main my-3" @click="payOrder">確認付款</button>
+                <button class="col-md-7 btn btn-main my-3 mb-5" @click="payOrder">確認付款</button>
                 
             </div>
         </div>
@@ -110,7 +110,6 @@
 
 
 <style lang="scss" scoped>
-    
 </style>
 
 <script>

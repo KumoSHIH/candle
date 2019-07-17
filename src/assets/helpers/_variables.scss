@@ -48,6 +48,7 @@ $cyan:    #17a2b8 !default;
 $main: #574f7d; //主色
 $second: #95adbe; //副色
 $text-main: #fdef96; //文字主色
+$text-light: #f76262;
 $text-dark: #574f7d; // 文字深色 
 
 $colors: () !default;
@@ -71,6 +72,7 @@ $colors: map-merge(
     "main": $main, //主色
     "second": $second, //副色
     "text-main": $text-main, //文字主色
+    "text-light": $text-light,
     "text-dark": $text-dark, // 文字深色
   ),
   $colors
@@ -88,6 +90,7 @@ $dark:          $gray-800 !default;
 $main: $main; //主色
 $second: #95adbe; //副色
 $text-main: #fdef96; //文字主色
+$text-light: #f76262;
 $text-dark: #574f7d; // 文字深色 
 
 
@@ -108,6 +111,7 @@ $theme-colors: map-merge(
     "main": $main, //主色
     "second": $second, //副色
     "text-main": $text-main, //文字主色
+    "text-light" : $text-light,
     "text-dark": $text-dark, // 文字深色
   ),
   $theme-colors
