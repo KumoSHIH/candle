@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="finBanner">
-            <div class="row d-flex justify-content-center">
-                <div class="wrap col-md-4">
+            <div class="row d-flex justify-content-center no-gutters">
+                <div class="wrap col-md-8 col-lg-4 px-5">
                     <div class="row no-gutters flex-column">
                         <div class="col mt-4">
                             <h2 class="text-center text-main mt-5"><strong>訂購完成</strong></h2>
@@ -36,17 +36,36 @@
         background-image: url('../../assets/images/bg2.jpg');
         background-position: 0 0;
         background-size: cover;
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: auto;
     }
     .wrap{
         background-color: rgba(255,255,255,.5);
         border-radius: 6px;
         padding: 0 20px;
+        //padding: 0 20px;
         position: absolute;
         top: 20%;
         box-shadow: 0px 3px 8px rgba(0,0,0,.6);
+        box-shadow: 0px 3px 5px rgba(0,0,0,.6);
+    }
+    @media (min-width: 320px) and (max-width: 420px){
+        .finBanner{
+            height: 650px;
+            width: 100%;
+        }
+        .wrap{
+            top: 25%;
+            width: 80%;
+        } 
+    }
+    @media (min-width: 767px){
+        .finBanner{
+            height: 780px;
+            width: 100%;
+        }
+        .wrap{
+            top: 25%;
+        } 
     }
 </style>
-
-

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row justify-content-center no-gutters">
                 <div class="col-md-7 mt-5">
-                    <h2 class="text-center text-main mt-5"><strong>訂單確認</strong></h2>
+                    <h2 class="text-center text-main mt-5 pt-5 pt-md-0"><strong>訂單確認</strong></h2>
                     <div class="step-wrap d-flex justify-content-between mt-4">
                         <div class="step1"><i class="fas fa-check success"></i></div>
                         <div class="step1"></div>

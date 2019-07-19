@@ -3,9 +3,12 @@
         <loading :active.sync="isLoading"></loading>
         <div class="container py-5">
             <div class="row d-flex justify-content-center mt-5">
-                <div class="col-12 col-md-5" >
+                <div class="col-12 col-md-6 col-lg-5" >
                     <div class="itemImg mt-4 mt-md-0" :style="{ backgroundImage: `url(${product.imageUrl})`}"></div>
                     <div class="mt-4 text-center text-md-left ">
+                        <div class="d-md-none">
+                            <h2 class="mt-4 mt-md-0 text-center text-md-left"><strong>{{ product.title }}</strong></h2>
+                        </div>
                         <h5 class="text-info"><strong>商品介紹</strong></h5>
                         <hr>
                         <p>{{ product.content }}</p>
@@ -22,7 +25,7 @@
                         
                     </div>
                 </div>
-                <div class="col-12 col-md-5">
+                <div class="col-12 col-md-6 col-lg-5">
                     <h2 class="mt-4 mt-md-0 text-center text-md-left"><strong>{{ product.title }}</strong></h2>
                     <div class="text-center text-md-left">
                         <span class="h3 text-info"><strong>NT {{ product.price | currency }}</strong></span>
@@ -94,6 +97,16 @@
     }
     li{
         list-style: none;
+    }
+    @media (max-width: 420px){
+        .itemImg{
+            width: 100%;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1200px){
+        .itemImg{
+            width: 100%;
+        }
     }
 </style>
 

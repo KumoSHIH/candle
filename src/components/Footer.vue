@@ -41,5 +41,10 @@
             color: #f76262;
         }
     }
+    @media (max-width:765px) {
+        .footer{
+            height: 100%;
+        }
+    }
     
 </style>

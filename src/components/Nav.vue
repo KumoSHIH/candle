@@ -1,43 +1,45 @@
 <template>
     <div>
-        <ul class="nav py-2 pr-5 bg-main ">
-            <li class="logo mr-auto ml-4 d-flex align-items-center" >
-                <router-link to="/home">
-                    <img src="../assets/images/title02.png" height="30">
-                </router-link>
-            </li>
-            
-            <li class="nav-item searchWrap">
-                <div class="icon d-inline-flex align-items-center">
-                    <input type="text" class="searchInput">
-                    <a class="nav-link " href="#"><i class="fas fa-search navIcon"></i></a>
+        <div class="row no-gutters">
+            <ul class="nav py-2 pr-5 bg-main ">
+                <li class="col col-md-4 logo d-flex justify-content-center align-items-center ml-4 mt-2 mt-md-0" >
+                    <router-link to="/home">
+                        <img src="../assets/images/title02.png" height="30">
+                    </router-link>
+                </li>
+                
+                <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end mt-2 mt-md-0 ml-4 ml-md-auto">
+                    <li class="nav-item searchWrap">
+                        <div class="icon d-none d-md-inline-flex align-items-center">
+                            <input type="text" class="searchInput">
+                            <a class="nav-link " href="#"><i class="fas fa-search navIcon"></i></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" @click.prevent="openModal"><i class="far fa-comment navIcon"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/bulletin">
+                            <a class="nav-link" href="#"><i class="fas fa-bullhorn navIcon"></i></a>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/login">
+                            <a class="nav-link" href="#"><i class="far fa-user navIcon"></i></a>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/cart">
+                            <i class="fas fa-shopping-cart navIcon"></i>
+                            <span class="badge badge-pill badge-danger" v-if="cart.length">{{ cart.length }}</span>
+                        </router-link>
+                    </li>
                 </div>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="#" @click.prevent="openModal"><i class="far fa-comment navIcon"></i></a>
-            </li>
-
-            <li class="nav-item">
-                <router-link to="/bulletin">
-                    <a class="nav-link" href="#"><i class="fas fa-bullhorn navIcon"></i></a>
-                </router-link>
-            </li>
-
-            <li class="nav-item">
-                <router-link to="/login">
-                    <a class="nav-link" href="#"><i class="far fa-user navIcon"></i></a>
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" to="/cart">
-                    <i class="fas fa-shopping-cart navIcon"></i>
-                    <span class="badge badge-pill badge-danger" v-if="cart.length">{{ cart.length }}</span>
-                </router-link>
-            </li>
-        </ul>
-
-
+            </ul>
+        </div>
 
 
         <!-- Modal -->
