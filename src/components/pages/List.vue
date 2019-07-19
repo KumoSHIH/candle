@@ -59,6 +59,22 @@
                         </div>
                         
                     </div>
+
+                    <!-- pagenaiton -->
+                    <!-- <nav class="my-5">
+                        <ul class="pagination border-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item" v-for="item in pages" :key="item.id" 
+                                :class="{activePage: currentPage === page -1}">
+                                <a class="page-link activePage" href="#" @click.prevent="currentPage = (page-1)">{{page}}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav> -->
                 </div>
             </div>
         </div>
@@ -112,6 +128,22 @@
         color: #fff;
         border-bottom: solid 0.5px #574f7d;
     }
+//pagination bs4
+    
+    .page-link{
+        color: #574f7d;
+        border: solid 2px #574f7d;
+    }   
+    .page-item:last-child .page-link{
+        border-radius: 0;
+    }
+    .page-item:first-child .page-link{
+        border-radius: 0;
+    }
+    .activePage{
+        background-color: #574f7d;
+        color: #fff;
+    }
 
 </style>
 
@@ -127,7 +159,9 @@ export default {
             products: [],
             isLoading: false,
             listItem : '全部商品',
-            filteredData : {},
+            filteredData : {},//過濾後的資料 
+            currentPage: 0,//目前所在的頁數
+            pages: 0,
 
         }
     },
@@ -139,26 +173,42 @@ export default {
             vm.$http.get(api).then((response) =>{
                 //console.log(response.data);
                 vm.products = response.data.products;
-                //console.log(vm.products);
+                //console.log(vm.products); 
                 if(vm.listItem === '全部商品'){
-                    vm.filteredData = Object.assign({}, vm.products);
+                    //vm.filteredData = Object.assign({}, vm.products);
+                    vm.filteredData = vm.products;
                 }else{
-                    vm.filteredData = vm.products.filter(function(item){
-                        if(item.category === vm.listItem){
-                            return true;
-                        }
-                    });
+                    vm.filteredData = vm.products.filter((item) => item.category === vm.listItem  
+                    );
                 };
                 vm.isLoading = false;
             });
             
         },
         filterItem(name){
+            const newData = [];
             const vm = this;
             vm.listItem = name;
-            vm.getProduct(vm.filterName);
-            console.log(vm.filteredData);
+            vm.getProduct(vm.listItem);
+
+            // vm.filteredData.forEach((item,i)=>{
+            //     if(i % 9 ===0){
+            //         newData.push([]) //每九筆資料新增一個空陣列
+            //     }
+            //     const page = parseInt(i / 9)
+            //     newData[page].push(item)
+            // })
+            // vm.pages = newData.length;
+            // vm.currentPage = 0;
+            // return newData;
+            
+            
+            //console.log(vm.filteredData);
         }
+        
+        
+    },
+    computed:{
         
     },
     created(){

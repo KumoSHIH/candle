@@ -12,10 +12,12 @@ import CustomerCheckout from '@/components/pages/CustomerCheckout';
 import HomeRouter from '@/components/HomeRouter';//進入點
 import Home from '@/components/pages/Home';
 import List from '@/components/pages/List';
+import ItemPage from '@/components/pages/ItemPage';
 import Cart from '@/components/pages/Cart';
 import CartAddress from '@/components/pages/CartAddress';
 import CartPay from '@/components/pages/CartPay';
 import CartFin from '@/components/pages/CartFin';
+import Bulletin from '@/components/pages/Bulletin';//公告
 
 Vue.use(Router)
 
@@ -41,6 +43,11 @@ export default new Router({
           component: List,
         },
         {
+          path: 'item_page/:itemID',
+          name: "ItemPage",
+          component: ItemPage,
+        },
+        {
           path: 'cart',
           name: "Cart",
           component: Cart,
@@ -59,6 +66,11 @@ export default new Router({
           path: 'cart_fin',
           name: "CartFin",
           component: CartFin,
+        },
+        {
+          path: 'bulletin',
+          name: "Bulletin",
+          component: Bulletin,
         },
       ]
     },
