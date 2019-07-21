@@ -43,7 +43,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="modalQA" tabindex="-1" role="dialog">
+        <div class="modal fade " id="modalQA" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -150,6 +150,9 @@
         font-size: 15px;
         cursor: pointer;
         color: #574f7d;
+    }
+    .modal .fade .show{
+        padding-right: 0;
     }
 
 </style>

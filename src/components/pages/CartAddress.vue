@@ -1,5 +1,8 @@
 <template>
     <div>
+        <loading :active.sync="isLoading">
+            <CandleLoading/>
+        </loading>
         <div class="container pt-5">
             <div class="row justify-content-center no-gutters">
                 <div class="col-md-7 mt-5">
@@ -92,6 +95,7 @@ export default {
                 },
                 message:'',
             },
+            isLoading: false,
         }
     },
     methods:{
@@ -99,15 +103,17 @@ export default {
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
             const order = vm.form;
-
+            vm.isLoading = true;
             vm.$validator.validate().then((valid)=>{
                 if(valid){
                     vm.$http.post(api,{ data: order }).then((response)=>{
                         if(response.data.success){
                             vm.$router.push(`/cart_pay/${response.data.orderId}`);
+                            vm.isLoading = false;
                         };
                     });
                 }else{
+                    vm.isLoading = false;
                     alert('欄位不完整');
                 }
             })

@@ -1,6 +1,10 @@
 <template>
     <div>
-        <loading :active.sync="isLoading"></loading>
+        <loading :active.sync="isLoading" :is-full-page="true">
+            <template>
+                <CandleLoading/>
+            </template>
+        </loading>
         <div class="jumbotron banner">
             <div class="text-right mt-5">
                 <h1>炎〞夏日，特賣優惠</h1>
@@ -188,7 +192,7 @@ export default {
     methods:{
         getProduct(){
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
             vm.isLoading = true;
             vm.$http.get(api).then((response) =>{
                 //console.log(response.data);
@@ -222,13 +226,8 @@ export default {
             // vm.currentPage = 0;
             // return newData;
             
-            
             //console.log(vm.filteredData);
         }
-        
-        
-    },
-    computed:{
         
     },
     created(){

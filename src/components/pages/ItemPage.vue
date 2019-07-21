@@ -1,6 +1,10 @@
 <template>
     <div>
-        <loading :active.sync="isLoading"></loading>
+        <loading :active.sync="isLoading" :is-full-page="true">
+            <template>
+                <CandleLoading/>
+            </template>
+        </loading>
         <div class="container py-5">
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col-12 col-md-6 col-lg-5" >

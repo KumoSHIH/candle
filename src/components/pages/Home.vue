@@ -1,6 +1,12 @@
 <template>
     <div>
         <Pronavbar/>
+        <loading :active.sync="isLoading"></loading>
+        
+        <a href="#" class="scrollTop text-center animatedJS" id="top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
         <div class="hero1 row d-flex flex-column justify-content-center align-items-center no-gutters">
             <div class="svgWrap">
                 <svg viewBox="0 0 268 31.75">
@@ -113,33 +119,33 @@
                 </p>
             </div>
             
-            <div class="text-white hero1Icon ">
-                <!-- animated bounce -->
+            <div class="text-white hero1Icon animatedJS">
+                
                 <i class="fas fa-angle-double-down fa-2x"></i>
             </div>   
         </div>
         <div class="hero2 row justify-content-center no-gutters">
             <div class="hero2Txt d-flex flex-column justify-content-center align-items-center">
-                <h2 class="display-4 bg-text-light text-text-main text-center"><strong><em>SUMMER SALE</em></strong></h2>
-                <h2 class="display-4 bg-text-light text-text-main text-center "><strong><em>全館滿$999享折扣!!</em></strong></h2>
-                <h2 class="display-4 bg-text-light text-text-main text-center "><strong><em>當月壽星結帳再95折!!</em></strong></h2>
+                <h2 class="display-4 bg-text-light text-text-main text-center animatedJS"><strong><em>SUMMER SALE</em></strong></h2>
+                <h2 class="display-4 bg-text-light text-text-main text-center animatedJS"><strong><em>全館滿$999享折扣!!</em></strong></h2>
+                <h2 class="display-4 bg-text-light text-text-main text-center animatedJS"><strong><em>當月壽星結帳再95折!!</em></strong></h2>
             </div>
         </div>
 
         <section class="hero3 row justify-content-center align-items-center no-gutters">
             <div class="col-md-6 handMadeWrap d-flex flex-column justify-content-center align-items-center">
                 <button class="btn btn-main bntHand">了解更多</button>
-                <p class="col-md-10">帶上你的情人、朋友，一起來做一個屬於自己香味的蠟燭吧！靜靜地感受心靈的沉靜，
+                <p class="col-md-10 animatedLeft">帶上你的情人、朋友，一起來做一個屬於自己香味的蠟燭吧！靜靜地感受心靈的沉靜，
                     感受天然低溫大豆蠟的獨特觸感，彷彿洗去一天的疲憊....香氛蠟燭不僅僅是只有照明、香氛舒壓的功用，
                     它也是一個家飾、一種生活品味的呈現。等你來一起體驗它的獨特魅力！
                 </p>
             </div>
-            <div class="col-md-6 hmTxt d-flex flex-column justify-content-center align-items-center">
-                <div class="col-10 handMadeTxt mt-5 text-white">
+            <div class="col-md-6 hmTxt d-flex flex-column justify-content-center align-items-center ">
+                <div class="col-10 handMadeTxt mt-5 text-white animatedRight">
                     <h3>精緻手作課程</h3>
                     <p>課程中將準備 20 款不同的配方原料，提供學員們自行調配個人專屬香氛蠟燭，讓居家空間更增添幾許優逸氣息，感受生活的慢時尚。</p>
                 </div>
-                <div class="col-10 rightTxt my-5 text-white">
+                <div class="col-10 rightTxt my-5 text-white animatedRight">
                     <h3>課程介紹</h3>
                     <li>NT$1000。費用含手作體驗：20 種配方原料、手工玻璃容器（直徑 9 x 7.5cm，270ml）、包材、現場工具使用。</li>
                     <li>專業設計師一起創作，親自製作屬於你且獨一無二的作品。</li>
@@ -154,23 +160,30 @@
         <section class="product row d-flex justify-content-center my-5 no-gutters">
             <div class="col-12">
                 <div class="row justify-content-center no-gutters">
-                    <div class="col-10 col-md-3 col-lg-2 sale mb-4 mb-md-0 mr-md-2">
-                        <div class="inner">
-                            <div class="h1 text-center mt-4">夏日促銷</div>
-                            <p>炎熱的夏日，來點降價小確幸解解煩悶吧！</p>
-                        </div>
+                    <div class="sale col-10 col-md-3 col-lg-2  mb-4 mb-md-0 mr-md-2 animatedJS">
+                        <router-link to="/list" style="text-decoration:none">
+                            <div class="inner">
+                                <a href="#" class="h1 text-center mt-4 text-success ">夏日慶典</a>
+                                <p>炎熱的夏日，來點降價小確幸解解煩悶吧！</p>
+                            </div>
+                        </router-link>
+                    
                     </div>
-                    <div class="col-10 col-md-3 col-lg-2 new mb-4 mb-md-0 mr-md-2 ">
-                        <div class="inner">
-                            <div class="h1 text-center mt-4">最新上架</div>
-                            <p>新的心動：夏日的吉野櫻、南法小雛菊</p>
-                        </div>
+                    <div class="new col-10 col-md-3 col-lg-2 mb-4 mb-md-0 mr-md-2 animatedJS">
+                        <router-link to="/list" style="text-decoration:none">
+                            <div class="inner">
+                                <a href="#" class="h1 text-center mt-4 ">最新上架</a>
+                                <p>新的心動：夏日的吉野櫻、南法小雛菊、紫色塔克拉</p>
+                            </div>
+                        </router-link>
                     </div>
-                    <div class="col-10 col-md-3 col-lg-2 hot ">
-                        <div class="inner">
-                            <div class="h1 text-center mt-4 ">人氣商品</div>
-                            <p>特製水果蠟燭。你想讓誰加入成為他們的夥伴呢?</p>
-                        </div>
+                    <div class="hot col-10 col-md-3 col-lg-2 animatedJS">
+                        <router-link to="/list" style="text-decoration:none">
+                            <div class="inner">
+                                <a href="#" class="h1 text-center mt-4 ">人氣商品</a>
+                                <p>特製水果蠟燭。你想讓誰加入成為他們的夥伴呢?</p>
+                            </div>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -178,314 +191,60 @@
     </div>
 </template>
 
-<style lang="scss" scoped>
-
-// svg
-    .st0{fill:#fff;stroke:#fff;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;} 
-    .svgWrap{
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translateX(-50%);   
-        svg{
-            width: 400px;
-            height: 55px ;
-        }
-    } 
-    .svgWrap.path{
-        stroke: #fff;
-        fill: #fff;
-        stroke-dasharray: 200;
-        opacity: 1;
-        animation: animate 3s;
-
-    }
-    @keyframes animate{
-        
-        0%{
-            opacity: 0;
-            fill: none;
-            stroke-dashoffset: 200;
-        }
-        30%{
-            opacity: 10;
-            fill: none;
-            stroke-dashoffset: 200;
-        }
-        90%{
-            
-            fill: rgba(255, 2552, 255, 0);
-
-        }
-        100%{
-            opacity: 10;
-            fill: rgba(255, 2552, 255, 1);
-            stroke-dashoffset: 0;
-        }
-    }
-    @media (max-width: 375px) and(min-width: 319px){
-        .svgWrap{
-            position: absolute;
-            top: 29%;
-            
-            svg{
-                width: 280px;
-                height: 55px ;
-            }
-        } 
-
-    }
-    @media(min-width: 376px) and (max-width:416px){
-        .svgWrap{
-            position: absolute;
-            top: 33%;
-            left: 50%;
-            transform: translateX(-50%);   
-            svg{
-                width: 280px;
-                height: 55px ;
-            }
-        } 
-    }
-
-
-//hero 1
-    .hero1{
-        background-image: url(../../assets/images/hero2.jpg);
-        background-position: 10% 10%;
-        background-size: cover;
-        height: 1000px;
-    }
-    .hero1bg{
-        position: absolute;
-        width: 400px;
-        height: 350px;
-        margin-top: 40px;
-        z-index: 1;
-        background-color: rgba(0,0,0,.3); 
-        opacity: 0;
-        transform: translateY(100%);
-
-        animation: intro 2s forwards;
-        animation-delay: 1s;
-    }
-    
-    .introTxt{
-        width: 300px;
-        margin-top: 100px;
-        letter-spacing: 1.5px;
-        z-index: 10;
-        opacity: 0;
-        transform: translateY(80%);
-
-        animation: intro 1.5s forwards;
-        animation-delay: 1.8s;
-    
-    }
-    @keyframes intro{
-        to{
-            opacity: 1;
-            transform: translateY(0); 
-        }
-    }
-
-    .hero1Icon{
-        position: absolute;
-        bottom: -50px;
-        //animation-iteration-count: infinite;
-    }
-    @media (max-width: 375px) and(min-width: 319px){
-        .hero1{
-            height: 680px;
-        }
-        .hero1bg{
-            width: 100%;
-            margin-top: 120px;
-        }
-        .introTxt{
-            margin-top: 250px;
-        }
-        .hero1Icon{
-            position: relative;
-            bottom: -40px;
-        }
-    }
-    @media (min-width: 376px) and (max-width:416px){
-        .hero1{
-            height: 720px;
-        }
-        .hero1bg{
-            width: 100%;
-            margin-top: 150px;
-        }
-        .introTxt{
-            margin-top: 300px;
-            
-        }
-        .hero1Icon{
-            position: relative;
-            bottom: -30px;
-        }
-        
-    }
-    @media  (min-width: 700px) and (max-width: 767px){
-        .hero1bg{
-            margin-top: 150px;
-        }
-        .introTxt{
-            margin-top: 350px;
-            
-        }
-        .hero1Icon{
-            position: relative;
-            bottom: -150px;
-        }
-    }
-
-//hero2 parallax
-    .hero2{ 
-        background: url(../../assets/images/hero1.jpg) fixed ;
-        background-position: 10%;
-        background-size: cover;
-        height: 600px;
-    }
-    .hero2Txt{
-        h2{
-            border: solid 3px;
-            padding: 20px;
-            box-shadow: 8px 8px 5px rgba(0,0,0,.3);
-        }
-        h2:first-child{
-            margin-top: 50px;
-        }
-        
-    }
-    @media (max-width: 375px) and(min-width: 319px){
-        .hero2{
-            height: 900px;
-        }
-    }
-    @media(min-width: 376px) and (max-width:416px){
-        .hero2{
-            height: 800px;
-        }
-    }
-//hero3
-    .handMadeWrap{
-        height: 600px;
-        background: url(../../assets/images/p5.jpg) ;
-        background-size: cover;
-        background-position: center center;
-        
-        .bntHand{
-            height: 60px;
-
-            //border: solid 2px #574f7d;
-            box-shadow: 0px 3px 5px rgba(0,0,0,.3);
-            margin-top: 45%;
-
-            color: #fff;
-            font-weight: bold;
-            transition: .5s;
-        }
-        p{
-            font-size: 16px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            padding: 10px;
-            margin-top: 10px;
-        }
-        p:first-letter{
-            font-size: 28px;
-        }
-    }    
-    
-
-    .hmTxt{
-        background-color: #574f7d;
-        .handMadeTxt,.rightTxt{
-            opacity: 1;
-            //transform: translateY(80%);
-            //滾動視窗後觸發這個
-            //animation: intro 2s forwards;
-            animation-delay: 2s;
-        }
-        
-        h3{
-            border: solid 2px #fff;
-            display: inline-flex;
-            
-            padding: 10px 15px;
-        }
-
-
-    }
-
-//product  
-    .new,.sale,.hot{
-        height: 330px;
-        border-radius: 10px;
-        box-shadow: 0px 5px 8px rgba(0,0,0,.3);
-        cursor: pointer;
-    }
-    .hot{
-        background: url(../../assets/images/p4.jpg);
-        background-size: cover;
-        background-position: center center;
-
-        color:#fff;
-        
-
-    }
-    .new{
-        background: url(../../assets/images/h1.jpg);
-        background-size: cover;
-        background-position: center center;
-
-        color:#fff;
-    }
-    .sale{
-        background: url(../../assets/images/p7.jpg);
-        background-size: cover;
-        background-position: center center;
-
-        color:#fff;
-    }
-    .inner{
-        margin-top: 30%;
-    }
-    .inner p{
-        padding:10px;
-        text-align: center;
-        clip-path: inset(0% 0% 100% 0%);
-        transition: clip-path .5s ease-in-out;
-    }
-    .hot:hover p,.sale:hover p,.new:hover p{
-        clip-path: inset(0% 0% 0% 0%);
-        background-color: #f76262;
-    }
-    
-    
-
-
-    
-    
-</style>
-
-<script>
-
-</script>
 
 
 <script>
+import $ from 'jquery';
 import Pronavbar from '../Pronavbar';
 
 export default {
     components:{   
         Pronavbar,
     },
-    created(){
+    data(){
+        return{
+            isLoading: false,
+        }
+    },
+    methods:{
         
+    },
+    
+    
+    created(){
+        $(document).ready(function(){
+            $('#top').click(function(e){
+                e.preventDefault();
+                $('html,body').animate({scrollTop : 0}, 1000);
+            });
+            $(window).scroll(function(){
+                var scrollPos = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                
+                //console.log(scrollPos,windowHeight);
+                $('.animatedJS').each(function(){
+                    var thisPos = $(this).offset().top;
+                    //console.log(thisPos);
+                    if((windowHeight + scrollPos) >= thisPos){
+                        $(this).addClass('fadeIn');
+                    }
+                });
+                $('.animatedRight').each(function(){
+                    var thisPos = $(this).offset().top;
+                    if((windowHeight + scrollPos) > thisPos){
+                        $(this).addClass('fadeRight');
+                    }
+
+                });
+                $('.animatedLeft').each(function(){
+                    var thisPos = $(this).offset().top;
+                    if((windowHeight + scrollPos) > thisPos){
+                        $(this).addClass('fadeLeft');
+                    }
+
+                });
+            })
+        });
     }
 }
 </script>
