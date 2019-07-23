@@ -1,18 +1,5 @@
 <template>
     <div>
-<<<<<<< HEAD
-        <ul class="nav py-2 pr-5 bg-main ">
-            <li class="logo mr-auto ml-4 d-flex align-items-center" >
-                <router-link to="/home">
-                    <img src="../assets/images/title02.png" height="30">
-                </router-link>
-            </li>
-            
-            <li class="nav-item searchWrap">
-                <div class="icon d-inline-flex align-items-center">
-                    <input type="text" class="searchInput">
-                    <a class="nav-link " href="#"><i class="fas fa-search navIcon"></i></a>
-=======
         <div class="row no-gutters">
             <ul class="nav py-2 pr-5 bg-main ">
                 <li class="col col-md-4 logo d-flex justify-content-center align-items-center ml-4 mt-2 mt-md-0" >
@@ -50,64 +37,11 @@
                             <span class="badge badge-pill badge-danger" v-if="cart.length">{{ cart.length }}</span>
                         </router-link>
                     </li>
->>>>>>> rwd
                 </div>
             </ul>
         </div>
 
 
-<<<<<<< HEAD
-            <li class="nav-item ">
-                <a class="nav-link" href="#" @click.prevent="openModal"><i class="far fa-comment navIcon"></i></a>
-            </li>
-
-            <li class="nav-item">
-                <router-link to="/bulletin">
-                    <a class="nav-link" href="#"><i class="fas fa-bullhorn navIcon"></i></a>
-                </router-link>
-            </li>
-
-            <li class="nav-item">
-                <router-link to="/login">
-                    <a class="nav-link" href="#"><i class="far fa-user navIcon"></i></a>
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" to="/cart">
-                    <i class="fas fa-shopping-cart navIcon"></i>
-                    <span class="badge badge-pill badge-danger" v-if="cart.length">{{ cart.length }}</span>
-                </router-link>
-            </li>
-        </ul>
-
-
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalQA" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">留言給我們</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-md-10">
-                                <div class="form-group">
-                                    <label for="name" class="d-flex align-items-center mb-1">
-                                        <i class="fas fa-user-circle fa-2x mr-2"></i>
-                                        <span>姓名</span>
-                                    </label>
-                                    <input type="text" name="name" v-model="message.name"
-                                    v-validate="'required'" :class="{'is-invalid': errors.has('name')}"
-                                    class="form-control" id="name" placeholder="王小美">
-                                    <span class="text-danger" v-if="errors.has('name')">請輸入姓名或暱稱</span>
-                                </div>
-
-=======
         <!-- Modal -->
         <div class="modal fade " id="modalQA" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -132,7 +66,6 @@
                                     <span class="text-danger" v-if="errors.has('name')">請輸入姓名或暱稱</span>
                                 </div>
 
->>>>>>> rwd
                                 <div class="form-group">
                                     <label for="email" class="d-flex align-items-center mb-1">
                                         <i class="far fa-envelope fa-2x mr-2"></i>
@@ -218,12 +151,9 @@
         cursor: pointer;
         color: #574f7d;
     }
-<<<<<<< HEAD
-=======
     .modal .fade .show{
         padding-right: 0;
     }
->>>>>>> rwd
 
 </style>
 

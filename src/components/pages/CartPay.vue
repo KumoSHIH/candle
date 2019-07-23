@@ -111,16 +111,6 @@
     </div>
 </template>
 
-
-<<<<<<< HEAD
-<style lang="scss" scoped>
-</style>
-
-<script>
-=======
->>>>>>> rwd
-
-
 <script>
 export default {
     data(){

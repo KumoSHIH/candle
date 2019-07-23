@@ -41,13 +41,10 @@
             color: #f76262;
         }
     }
-<<<<<<< HEAD
-=======
     @media (max-width:765px) {
         .footer{
             height: 100%;
         }
     }
->>>>>>> rwd
     
 </style>

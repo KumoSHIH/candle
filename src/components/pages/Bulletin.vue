@@ -1,9 +1,6 @@
 <template>
     <div>
-<<<<<<< HEAD
-=======
         <loading :active.sync="isLoading"></loading>
->>>>>>> rwd
         <div class="container pt-5">
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col-md-8 text-center ">

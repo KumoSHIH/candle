@@ -1,14 +1,9 @@
 <template>
     <div>
-<<<<<<< HEAD
-        <loading :active.sync="isLoading"></loading>
-        <Nav/>
-=======
         <loading :active.sync="isLoading">
             <CandleLoading/>
         </loading>
         
->>>>>>> rwd
         <div class="cartWrap container pt-5">
             <div class="row">
                 <div class="col-md-8 mt-5">

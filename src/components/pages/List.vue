@@ -70,15 +70,9 @@
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
-<<<<<<< HEAD
                             <li class="page-item" v-for="item in pages" :key="item.id" 
                                 :class="{activePage: currentPage === page -1}">
                                 <a class="page-link activePage" href="#" @click.prevent="currentPage = (page-1)">{{page}}</a>
-=======
-                            <li class="page-item" v-for="page in pages" :key="page.id" 
-                                :class="{'activePage': currentPage === page -1}">
-                                <a class="page-link" href="#" @click.prevent="currentPage = (page-1)">{{page}}</a>
->>>>>>> rwd
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
@@ -216,41 +210,24 @@ export default {
             
         },
         filterItem(name){
-<<<<<<< HEAD
-            const newData = [];
-=======
             //const newData = [];
->>>>>>> rwd
             const vm = this;
             vm.listItem = name;
             vm.getProduct(vm.listItem);
 
-<<<<<<< HEAD
             // vm.filteredData.forEach((item,i)=>{
             //     if(i % 9 ===0){
             //         newData.push([]) //每九筆資料新增一個空陣列
             //     }
             //     const page = parseInt(i / 9)
             //     newData[page].push(item)
-=======
-            // vm.products.forEach((item,i)=>{
-            //     if(i % 6 ===0){
-            //         newData.push([]) //每九筆資料新增一個空陣列
-            //     }
-            //     const page = parseInt(i / 6);
-            //     newData[page].push(item);
->>>>>>> rwd
             // })
             // vm.pages = newData.length;
             // vm.currentPage = 0;
             // return newData;
             
-<<<<<<< HEAD
             
             //console.log(vm.filteredData);
-=======
-            // console.log(vm.filteredData);
->>>>>>> rwd
         }
         
         

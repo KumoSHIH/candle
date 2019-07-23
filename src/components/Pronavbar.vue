@@ -8,13 +8,7 @@
                 <router-link class="nav-link" to="/list">新品上市</router-link>
             </li>
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link" href="/list"
-                :class="{'active': listItem === '大豆蠟燭'}"
-                @click.prevent="filterItem('大豆蠟燭')">大豆蠟燭</a>
-=======
                 <router-link class="nav-link" to="/list">大豆蠟燭</router-link>
->>>>>>> rwd
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/list">水晶蠟燭</router-link>
@@ -64,11 +58,7 @@
         position: fixed;
         top: 53px;
         width: 100%;
-<<<<<<< HEAD
-        height: 60px;
-=======
         height: 55px;
->>>>>>> rwd
         background-color: #000;
         z-index: 99;
         opacity: .7;
@@ -91,10 +81,6 @@
             clear: both;
             width: 0%;
             border-bottom: solid 2px #fdef96;
-<<<<<<< HEAD
-
-=======
->>>>>>> rwd
             margin: auto;
             position: relative;
             top: 5px;

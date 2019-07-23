@@ -49,11 +49,6 @@
         box-shadow: 0px 3px 8px rgba(0,0,0,.6);
         box-shadow: 0px 3px 5px rgba(0,0,0,.6);
     }
-<<<<<<< HEAD
-</style>
-
-
-=======
     @media (min-width: 320px) and (max-width: 420px){
         .finBanner{
             height: 650px;
@@ -74,4 +69,3 @@
         } 
     }
 </style>
->>>>>>> rwd
