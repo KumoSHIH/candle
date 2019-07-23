@@ -159,7 +159,7 @@
         <section class="hero3 row justify-content-center align-items-center no-gutters">
             <div class="col-md-6 handMadeWrap d-flex flex-column justify-content-center align-items-center">
                 <button class="btn btn-main bntHand">了解更多</button>
-                <p class="col-md-10 animatedLeft">帶上你的情人、朋友，一起來做一個屬於自己香味的蠟燭吧！靜靜地感受心靈的沉靜，
+                <p class="col-10 animatedLeft">帶上你的情人、朋友，一起來做一個屬於自己香味的蠟燭吧！靜靜地感受心靈的沉靜，
                     感受天然低溫大豆蠟的獨特觸感，彷彿洗去一天的疲憊....香氛蠟燭不僅僅是只有照明、香氛舒壓的功用，
                     它也是一個家飾、一種生活品味的呈現。等你來一起體驗它的獨特魅力！
                 </p>
