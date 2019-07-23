@@ -58,7 +58,7 @@
         position: fixed;
         top: 53px;
         width: 100%;
-        height: 60px;
+        height: 55px;
         background-color: #000;
         z-index: 99;
         opacity: .7;

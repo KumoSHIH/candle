@@ -132,6 +132,30 @@
             </div>
         </div>
 
+        <section class="about row d-flex justify-content-center align-items-center no-gutters">
+            <div class="col-10 col-md-2 text-center mr-md-5 animatedJS">
+                <i class="frame fas fa-hourglass-half"></i>
+                <h2 class="mt-3">時間</h2>
+                <p class="mt-3">香薰蠟燭產品下單後現做，2-6工作天內發貨，預定可備註發貨日期，
+                    不接受緊急訂單，若訂單在製作中，不接受退訂，請您諒解。忙碌中若無回覆，請耐心等待，我們將盡快為您服務。</p>
+            </div>
+            <div class="col-10 col-md-2 text-center mt-4 mt-md-0 mr-md-5 animatedJS">
+                <i class="frame fas fa-leaf"></i>
+                <h2 class="mt-3">純天然</h2>
+                <p class="mt-3">原材料為美國大豆蠟，由大豆製作而成，純天然材料，
+                    不會釋放化學物質，燃燒更緩慢，溫和地釋放香味，
+                    進口香料不含磷苯二甲酸，香味持久溫和，進口綿燭芯，不含鉛，燃燒更充分。</p>
+            </div>
+            <div class="col-10 col-md-2  text-center mt-4 mt-md-0 mr-md-5 animatedJS">
+                <i class="frame fab fa-bitbucket"></i>
+                <h2 class="mt-3">產品</h2>
+                <p class="mt-3">蠟燭產品皆為純手工製作，完全一樣是不存在的，也因此有其獨特性
+                    ，小氣泡或細節不平整等為正常狀況，不影響使用和美觀，保證每個產品都擁有
+                    100%的效果，非質量問提概不退換。</p>
+            </div>
+            
+        </section>
+
         <section class="hero3 row justify-content-center align-items-center no-gutters">
             <div class="col-md-6 handMadeWrap d-flex flex-column justify-content-center align-items-center">
                 <button class="btn btn-main bntHand">了解更多</button>
@@ -163,7 +187,7 @@
                     <div class="sale col-10 col-md-3 col-lg-2  mb-4 mb-md-0 mr-md-2 animatedJS">
                         <router-link to="/list" style="text-decoration:none">
                             <div class="inner">
-                                <a href="#" class="h1 text-center mt-4 text-success ">夏日慶典</a>
+                                <a href="#" class="h1 text-center mt-4 text-info">夏日慶典</a>
                                 <p>炎熱的夏日，來點降價小確幸解解煩悶吧！</p>
                             </div>
                         </router-link>
@@ -206,11 +230,6 @@ export default {
             isLoading: false,
         }
     },
-    methods:{
-        
-    },
-    
-    
     created(){
         $(document).ready(function(){
             $('#top').click(function(e){

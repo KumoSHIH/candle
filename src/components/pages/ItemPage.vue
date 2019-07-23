@@ -146,6 +146,7 @@ export default {
             vm.$http.post(api,{ data: cart }).then((response)=>{
                 //console.log(response.data);
                 vm.$bus.$emit('updateCart');
+                vm.$bus.$emit('message:push', response.data.message,'success');
             })
         },
     },

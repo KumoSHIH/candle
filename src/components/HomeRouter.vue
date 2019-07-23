@@ -9,11 +9,13 @@
 <script>
 import Nav from './Nav';
 import Footer from './Footer';
+import Alert from './AlertMessage';
 
 export default {
     components:{
         Nav,
         Footer,
+        Alert,
     }
 }
 </script>

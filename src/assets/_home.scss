@@ -239,6 +239,29 @@
         height: 800px;
     }
 }
+
+//about
+.frame{
+    width: 100px;
+    height: 100px;
+    border: solid 3px ;
+    border-radius: 99%;
+    color: $info;
+    font-size: 50px;
+    padding: 20px 0;
+}
+.about{
+    margin: 80px 0;
+    h2{
+        font-weight: bold;
+    }
+    p{
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+} 
+
 //hero3
 .handMadeWrap{
     height: 600px;
@@ -319,6 +342,7 @@
 
     a{
         text-decoration: none;
+        text-shadow: 0px 5px 5px rgba(0,0,0,.6);
         color: #fff;
         font-weight: bold;
         display: block;
@@ -355,7 +379,7 @@
 .animatedRight{
     opacity: 0;
     transition:  1.5s;
-    transform: translateX(200px);
+    transform: translateX(300px);
 }
 .fadeRight{
     opacity: 1;
@@ -365,7 +389,7 @@
 .animatedLeft{
     opacity: 0;
     transition:  1.5s;
-    transform: translateX(-200px);
+    transform: translateX(-300px);
 }
 .fadeLeft{
     opacity: 1;
