@@ -14,7 +14,5 @@ export default {
 
 <style lang="scss">
   @import "./assets/all";
-  html,body{
-    //background-color: #574f7d;
-  }
+  
 </style>

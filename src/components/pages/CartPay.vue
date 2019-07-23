@@ -1,9 +1,12 @@
 <template>
     <div>
+        <loading :active.sync="isLoading">
+            <CandleLoading/>
+        </loading>
         <div class="container">
             <div class="row justify-content-center no-gutters">
                 <div class="col-md-7 mt-5">
-                    <h2 class="text-center text-main mt-5"><strong>訂單確認</strong></h2>
+                    <h2 class="text-center text-main mt-5 pt-5 pt-md-0"><strong>訂單確認</strong></h2>
                     <div class="step-wrap d-flex justify-content-between mt-4">
                         <div class="step1"><i class="fas fa-check success"></i></div>
                         <div class="step1"></div>
@@ -109,12 +112,16 @@
 </template>
 
 
+<<<<<<< HEAD
 <style lang="scss" scoped>
 </style>
 
 <script>
+=======
+>>>>>>> rwd
 
 
+<script>
 export default {
     data(){
         return{
@@ -122,21 +129,25 @@ export default {
                 user:{},
             },
             orderID: '',
+            isLoading: false,
         }
     },
     methods:{
         getOrders(id){
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderID}`;
+            vm.isLoading = true;
             vm.$http.get(api).then((response)=>{
                 //console.log(response.data);
                 vm.order = response.data.order;
                 //console.log(vm.order);
+                vm.isLoading = false;
             })
         },
         payOrder(){
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderID}`;
+            vm.isLoading = true;
             vm.$validator.validate().then(valid => {
                 if (valid) {
                     vm.$http.post(api).then((response)=>{
@@ -144,9 +155,11 @@ export default {
                             vm.getOrders();
                             vm.$bus.$emit('updateCart');
                             vm.$router.push('/cart_fin');
+                            vm.isLoading = false;
                         }
                     })
                 }else{
+                    vm.isLoading = false;
                     alert('欄位不完整');
                 }
             });

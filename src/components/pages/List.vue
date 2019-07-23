@@ -1,9 +1,13 @@
 <template>
     <div>
-        <loading :active.sync="isLoading"></loading>
+        <loading :active.sync="isLoading" :is-full-page="true">
+            <template>
+                <CandleLoading/>
+            </template>
+        </loading>
         <div class="jumbotron banner">
             <div class="text-right mt-5">
-                <h1 class="display-3 text-dark">炎〞夏日，特賣優惠</h1>
+                <h1>炎〞夏日，特賣優惠</h1>
                 <span class="lead text-main bg-text-main p-1"><strong>單筆消費滿999(含)以上，9折優惠 / 1599(含)以上，8折優惠 !!</strong></span> 
                 <p class="d-none d-md-block mt-3 text-main">西元前三千年的古埃及，世界上第一支蠟燭出現，在人類生活中扮演重要的照明角色，直至愛迪生發明燈泡。<br>
                         天然植物香氛加入創意去滿足想像， 賦予蠟燭更多重的感官享受，如甜點般的療癒視覺、嗅覺與心靈。<br>
@@ -13,8 +17,8 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-4 col-lg-3">
                     <ul>
                         <li>
                             <a href="#" class="list text-white">產品列表</a> 
@@ -52,9 +56,9 @@
                     </ul>
                 </div>
                 
-                <div class="col-md-9">
-                    <div class="form-row">
-                        <div class="col-md-4" v-for="item in filteredData" :key="item.id">                            
+                <div class="col-md-8 col-lg-9">
+                    <div class="form-row justify-content-center justify-content-md-start mt-4 mt-md-0 mb-4">
+                        <div class="col-10 col-md-4 mb-4 mb-md-0" v-for="item in filteredData" :key="item.id">                            
                             <Card :card-item="item" />
                         </div>
                         
@@ -66,9 +70,15 @@
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                             </li>
+<<<<<<< HEAD
                             <li class="page-item" v-for="item in pages" :key="item.id" 
                                 :class="{activePage: currentPage === page -1}">
                                 <a class="page-link activePage" href="#" @click.prevent="currentPage = (page-1)">{{page}}</a>
+=======
+                            <li class="page-item" v-for="page in pages" :key="page.id" 
+                                :class="{'activePage': currentPage === page -1}">
+                                <a class="page-link" href="#" @click.prevent="currentPage = (page-1)">{{page}}</a>
+>>>>>>> rwd
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
@@ -87,6 +97,26 @@
         background-position: 10% ;
         background-size: cover;
         height: 400px;
+    }
+    h1{
+        font-size: 60px;
+    }
+    @media (max-width: 768px){
+        h1{
+            margin-top: 100px;
+        }
+    }
+    @media (max-width: 420px){
+        h1{
+            font-size: 35px;
+            text-align: center;
+            margin-top: 150px;
+            color: #f76262;
+        }
+        span{
+            display: block;
+            text-align: center;
+        }
     }
 //side Menu
     ul{
@@ -168,7 +198,7 @@ export default {
     methods:{
         getProduct(){
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
             vm.isLoading = true;
             vm.$http.get(api).then((response) =>{
                 //console.log(response.data);
@@ -186,24 +216,41 @@ export default {
             
         },
         filterItem(name){
+<<<<<<< HEAD
             const newData = [];
+=======
+            //const newData = [];
+>>>>>>> rwd
             const vm = this;
             vm.listItem = name;
             vm.getProduct(vm.listItem);
 
+<<<<<<< HEAD
             // vm.filteredData.forEach((item,i)=>{
             //     if(i % 9 ===0){
             //         newData.push([]) //每九筆資料新增一個空陣列
             //     }
             //     const page = parseInt(i / 9)
             //     newData[page].push(item)
+=======
+            // vm.products.forEach((item,i)=>{
+            //     if(i % 6 ===0){
+            //         newData.push([]) //每九筆資料新增一個空陣列
+            //     }
+            //     const page = parseInt(i / 6);
+            //     newData[page].push(item);
+>>>>>>> rwd
             // })
             // vm.pages = newData.length;
             // vm.currentPage = 0;
             // return newData;
             
+<<<<<<< HEAD
             
             //console.log(vm.filteredData);
+=======
+            // console.log(vm.filteredData);
+>>>>>>> rwd
         }
         
         

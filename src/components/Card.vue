@@ -85,6 +85,7 @@ export default {
     data(){
         return{
             cartDetail : [],
+
         }
     },
     methods:{
@@ -96,11 +97,10 @@ export default {
                 qty,
             };
             vm.$http.post(api, {data:cart}).then((response)=>{
-                //console.log(response);
                 vm.cartDetail = response.data.data;
-                console.log(vm.cartDetail);
+                //console.log(vm.cartDetail);
                 vm.$bus.$emit('updateCart');
-
+                vm.$bus.$emit('message:push', '已加入購物車', 'success');
             })
         },
         itemPage(id){

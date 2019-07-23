@@ -21,6 +21,7 @@ import router from './router';
 import './bus';
 import currencyFilter from "./filters/currency";
 import dateFilter from './filters/date';
+import CandleLoading from './components/CandleLoading';
 
 
 Vue.config.productionTip = false;
@@ -31,6 +32,7 @@ Vue.use(VueI18n);
 Vue.component("Loading", Loading); //全域方式載入此元件
 Vue.filter('currency', currencyFilter);
 Vue.filter('date',dateFilter);
+Vue.component('CandleLoading',CandleLoading);
 
 library.add(faSignInAlt,faUserPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);

@@ -1,28 +1,60 @@
 <template>
     <div>
-        <ul class="nav proNav d-flex justify-content-end align-items-center">
-            
+        <ul class="nav proNav d-md-flex justify-content-end align-items-center d-none d-md-block">   
             <li class="nav-item ">
                 <router-link class="nav-link" to="/list">全部商品</router-link>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">新品上市</a>
+                <router-link class="nav-link" to="/list">新品上市</router-link>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link" href="/list"
                 :class="{'active': listItem === '大豆蠟燭'}"
                 @click.prevent="filterItem('大豆蠟燭')">大豆蠟燭</a>
+=======
+                <router-link class="nav-link" to="/list">大豆蠟燭</router-link>
+>>>>>>> rwd
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">水晶蠟燭</a>
+                <router-link class="nav-link" to="/list">水晶蠟燭</router-link>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">創意蠟燭</a>
+                <router-link class="nav-link" to="/list">創意蠟燭</router-link>
             </li>
             <li class="nav-item mr-4">
-                <a class="nav-link" href="#">香氛蠟燭</a>
+                <router-link class="nav-link" to="/list">香氛蠟燭</router-link>
             </li>
         </ul>
+
+        <div class="humbuger row d-md-none no-gutters">
+            <nav class="col-12 navbar navbar-dark bg-dark" data-toggle="collapse" data-target="#navbarToggle">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div class="col-12 collapse" id="navbarToggle">
+                <li class="nav-item bg-second ">
+                    <router-link class="nav-link" to="/list">全部商品</router-link>
+                </li>
+                <li class="nav-item bg-second">
+                    <router-link class="nav-link" to="/list">新品上市</router-link>
+                </li>
+                <li class="nav-item bg-second">
+                    <router-link class="nav-link" to="/list">大豆蠟燭</router-link>
+                </li>
+                <li class="nav-item bg-second">
+                    <router-link class="nav-link" to="/list">水晶蠟燭</router-link>
+                </li>
+                <li class="nav-item bg-second">
+                    <router-link class="nav-link" to="/list">創意蠟燭</router-link>
+                </li>
+                <li class="nav-item bg-second">
+                    <router-link class="nav-link" to="/list">香氛蠟燭</router-link>
+                </li>
+            </div>
+            
+        </div>  
         
     </div>
 </template>
@@ -30,9 +62,13 @@
 <style lang="scss" scoped>
     .proNav{
         position: fixed;
-        top: 50px;
+        top: 53px;
         width: 100%;
+<<<<<<< HEAD
         height: 60px;
+=======
+        height: 55px;
+>>>>>>> rwd
         background-color: #000;
         z-index: 99;
         opacity: .7;
@@ -55,7 +91,10 @@
             clear: both;
             width: 0%;
             border-bottom: solid 2px #fdef96;
+<<<<<<< HEAD
 
+=======
+>>>>>>> rwd
             margin: auto;
             position: relative;
             top: 5px;
@@ -70,34 +109,32 @@
     .navHide{
         opacity: .5;
     }
+    @media(max-width: 768px){
+        .humbuger{
+            position: fixed;
+            top: 99px;
+            width: 100%;
+            z-index: 99;
+            li{
+                list-style: none;
+                border-bottom: solid 1px rgba(255,255,255,.6);
+            }
+            a{
+                text-decoration: none;
+                text-align: center;
+                letter-spacing: 1.5px;
+                font-weight: bold;
+                color: #574f7d;
+                &:hover,&:active,&:focus{
+                    color: #fff;
+                }
+            }
+        }
+    }
     
 </style>
 
 <script>
-import $ from 'jquery';
-$(document).scroll(function(e){
-    e.preventDefault();
-    let scrollPos = $(window).scrollTop();
-    let windowHeight = $(window).height();
-
-    $(window).scroll(function(){
-        let scroll = $(window).scrollTop();
-        $('.proNav').each(function(){
-            //console.log(scrollPos,windowHeight,thisPos);
-            let thisPos = $(this).offset().top; //proNav的位置
-            //console.log("proNav",thisPos);
-            // if(scrollPos >= thisPos){
-            //     $(this).addClass('navHide');
-            // }else if (scrollPos <= thisPos){
-            //     $(this).removeClass('navHide');
-            // }
-        })
-
-})
-})
-
-
-
 export default {
     data(){
         return{

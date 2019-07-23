@@ -1,11 +1,18 @@
 <template>
     <div>
+<<<<<<< HEAD
         <loading :active.sync="isLoading"></loading>
         <Nav/>
+=======
+        <loading :active.sync="isLoading">
+            <CandleLoading/>
+        </loading>
+        
+>>>>>>> rwd
         <div class="cartWrap container pt-5">
             <div class="row">
                 <div class="col-md-8 mt-5">
-                    <h3 class="text-center text-main bg-text-main py-2 mb-4">我的購物車</h3>
+                    <h3 class="text-center text-main bg-text-main py-2 mb-4 mt-4 mt-md-0">我的購物車</h3>
                     <tr v-for="item in cart.carts" :key="item.id"
                     class="d-flex justify-content-around align-items-center mb-3">
                         <th width="20%" class="itemImg" :style="{backgroundImage:`url(${item.product.imageUrl})`}"></th>
@@ -23,7 +30,7 @@
                             </button>
                         </th>
                     </tr>
-                    <div class="input-group col-md-8 mt-5 ml-3">
+                    <div class="input-group col-md-8 mt-5 ml-3 mb-4">
                         <input class="form-control" v-model="coupon_code"
                         type="text" id="coupon" placeholder="請輸入優惠券代碼">
                         <div class="input-group-append">
@@ -46,7 +53,7 @@
                         <span class="h5"><strong>NT{{ cart.final_total |currency }}</strong></span>
                     </div>
                     <router-link to="cart_address">
-                        <button class="btn btn-second w-100 py-2 mt-3">送出訂單 ></button>
+                        <button class="btn btn-second w-100 py-2 mt-3 mb-5 mb-md-0">送出訂單 ></button>
                     </router-link>
                 </div>
             </div>

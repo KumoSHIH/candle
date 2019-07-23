@@ -1,11 +1,27 @@
 <template>
     <div>
+<<<<<<< HEAD
         <loading :active.sync="isLoading"></loading>
         <div class="container py-5">
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col-12 col-md-5" >
                     <div class="itemImg mt-4 mt-md-0" :style="{ backgroundImage: `url(${product.imageUrl})`}"></div>
                     <div class="mt-4 text-center text-md-left ">
+=======
+        <loading :active.sync="isLoading" :is-full-page="true">
+            <template>
+                <CandleLoading/>
+            </template>
+        </loading>
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-12 col-md-6 col-lg-5" >
+                    <div class="itemImg mt-4 mt-md-0" :style="{ backgroundImage: `url(${product.imageUrl})`}"></div>
+                    <div class="mt-4 text-center text-md-left ">
+                        <div class="d-md-none">
+                            <h2 class="mt-4 mt-md-0 text-center text-md-left"><strong>{{ product.title }}</strong></h2>
+                        </div>
+>>>>>>> rwd
                         <h5 class="text-info"><strong>商品介紹</strong></h5>
                         <hr>
                         <p>{{ product.content }}</p>
@@ -22,7 +38,11 @@
                         
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="col-12 col-md-5">
+=======
+                <div class="col-12 col-md-6 col-lg-5">
+>>>>>>> rwd
                     <h2 class="mt-4 mt-md-0 text-center text-md-left"><strong>{{ product.title }}</strong></h2>
                     <div class="text-center text-md-left">
                         <span class="h3 text-info"><strong>NT {{ product.price | currency }}</strong></span>
@@ -95,6 +115,19 @@
     li{
         list-style: none;
     }
+<<<<<<< HEAD
+=======
+    @media (max-width: 420px){
+        .itemImg{
+            width: 100%;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1200px){
+        .itemImg{
+            width: 100%;
+        }
+    }
+>>>>>>> rwd
 </style>
 
 <script>
@@ -129,6 +162,10 @@ export default {
             vm.$http.post(api,{ data: cart }).then((response)=>{
                 //console.log(response.data);
                 vm.$bus.$emit('updateCart');
+<<<<<<< HEAD
+=======
+                vm.$bus.$emit('message:push', response.data.message,'success');
+>>>>>>> rwd
             })
         },
     },

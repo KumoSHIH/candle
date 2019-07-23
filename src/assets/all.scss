@@ -4,59 +4,6 @@
 
 @import "./_font.scss";
 @import "./_dashboard";
+@import "./_home";
 
-//自訂義form樣式
-    .candle-form{
-        padding: 10px;
-    }
-    //bs4
-    .form-group{
-        padding: 10px;
-
-    }
-    .form-control{
-        border: solid 2px $second;
-    }
-//step-roll
-    .step-wrap{
-        &:before{
-            position: absolute;
-            content: '';
-            width: 100%;
-            border: solid 2px $main;
-            margin-top: 14px;
-        }
-    }
-    .step1{
-        width: 30px;
-        height: 30px;
-        border-radius: 99%;
-        background-color: $main;
-        position: relative;
-        
-        &:after{
-            content: '';
-            position: absolute;
-            margin-top: 3px;
-            margin-left: 3px;
-            width: 24px;
-            height: 24px;
-            border-radius: 99%;
-            border: solid 2px #fff;    
-        }
-        
-    }
-    .point{
-        width: 30px;
-        height: 30px;
-        border-radius: 99%;
-        border: solid 3px $main;
-        background-color: #fff;
-        position: relative;
-    }
-    .success{
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        color: #fff;
-    }
+@import "./candleForm";
