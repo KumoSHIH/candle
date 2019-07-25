@@ -9,27 +9,26 @@
             <ul class="nav nav-tabs" id="myTab" role="tablist" >
               <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab"
-                  href="#signIn" role="tab"><font-awesome-icon icon="sign-in-alt" class="mr-1"/>登入</a> 
+                  href="#signIn" role="tab"><i class="fas fa-sign-in-alt mr-1"></i>會員登入</a> 
               </li>
               <li class="nav-item">
                 <a class="nav-link "  id="profile-tab" data-toggle="tab" 
-                  href="#register" role="tab"><font-awesome-icon icon="user-plus" class="mr-1"/>註冊</a>
+                  href="#register" role="tab"><i class="fas fa-user-plus mr-1"></i>註冊會員</a>
               </li>
             </ul>
             <div class="tab-content bg-white pt-3" id="myTabContent">
               <div class="tab-pane fade show active" id="signIn" role="tabpanel">
                 <div class="form-group px-4">
                   <label for="user">帳號</label>
-                  <input type="text" class="form-control" id="user" placeholder="abc@email.com"
-                    v-model="user.username">
+                  <input type="text" class="form-control" id="user" placeholder="abc@email.com">
+                    
                 </div>
                 <div class="form-group px-4">
                   <label for="password">密碼</label>
-                  <input type="password" class="form-control" id="password"
-                  v-model="user.password">
+                  <input type="password" class="form-control" id="password">
+                  
                 </div>
-                <input type="button" class="btn btn-outline-main col-3 ml-4 mb-4" value="登入"
-                  @click.prevent="signIn">
+                <input type="button" class="btn btn-outline-main col-3 ml-4 mb-4" value="登入">
               </div>
               <div class="tab-pane fade " id="register" role="tabpanel">
                   <div class="form-group px-4">
@@ -63,32 +62,13 @@ export default {
   components:{
     Nav,
   },
-  data() {
-    return {
-      user:{
-        username: '',
-        password: '',
-      }
-    };
-  },
-  methods:{
-    signIn(){
-      const api = `${process.env.APIPATH}/admin/signin`;
-      const vm = this;
-      this.$http.post(api, vm.user).then((response) => {
-        console.log(response.data);
-        if(response.data.success){
-          vm.$router.push('/admin/products'); //登入成功回到首頁
-        }
-      });
-    },
-  }
+  
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    @import "../../assets/_font.scss";
+//@import "../../assets/_font";
     //login background
     .loginImg{
         position: absolute;
@@ -116,25 +96,25 @@ export default {
         padding-top: 12px;
         padding-bottom: 12px;
 
-        background-color: $main;
+        background-color: #574f7d;
         color: #fff;
         
-        font-size: $font-m;
+        font-size: 16px;
         font-weight: bold;
         letter-spacing: 2px;
         text-align: center;
         
         transition: .3s;
         &:hover{
-            color: darken($text-main,20%);   
+            color: darken(#fdef96,20%);   
         }
     }
     .nav-link.active{
-        color: $main;
+        color: #574f7d;
         background-color: #fff;
         opacity: 1;
         &:hover{
-            color: darken($main,20%);   
+            color: darken(#574f7d,20%);   
         }
     }
     .tab-content{

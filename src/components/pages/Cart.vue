@@ -25,13 +25,7 @@
                             </button>
                         </th>
                     </tr>
-                    <div class="input-group col-md-8 mt-5 ml-3 mb-4">
-                        <input class="form-control" v-model="coupon_code"
-                        type="text" id="coupon" placeholder="請輸入優惠券代碼">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-main" @click="addCoupon">套用優惠碼</button>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-md-4 mt-5">
                     <h3 class="text-center bg-main text-light py-2">訂單小計</h3>
@@ -39,6 +33,7 @@
                         <span class="h6">小計</span>
                         <span class="h6">NT{{ cart.total |currency }}</span>
                     </div>
+                    
                     <div class="d-flex justify-content-between px-2" v-if="cart.final_total !== cart.total">
                         <span class="h6 text-danger">優惠券</span>
                         <span class="h6 text-danger">NT{{ cart.final_total |currency }}</span>
@@ -46,6 +41,13 @@
                     <div class="d-flex justify-content-between mt-3 px-2">
                         <span class="h5"><strong>總計</strong></span>
                         <span class="h5"><strong>NT{{ cart.final_total |currency }}</strong></span>
+                    </div>
+                    <div class="input-group my-3 px-1">
+                        <input class="form-control" v-model="coupon_code"
+                        type="text" id="coupon" placeholder="請輸入優惠券代碼">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-main" @click="addCoupon">套用優惠碼</button>
+                        </div>
                     </div>
                     <router-link to="cart_address">
                         <button class="btn btn-second w-100 py-2 mt-3 mb-5 mb-md-0">送出訂單 ></button>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <Pronavbar/>
-        <loading :active.sync="isLoading"></loading>
+        <loading :active.sync="isLoading"><CandleLoading/></loading>
         
         <a href="#" class="scrollTop text-center animatedJS" id="top">
             <i class="fas fa-arrow-up"></i>
@@ -126,27 +126,27 @@
         </div>
         <div class="hero2 row justify-content-center no-gutters">
             <div class="hero2Txt d-flex flex-column justify-content-center align-items-center">
-                <h2 class="display-4 bg-text-light text-text-main text-center animatedJS"><strong><em>SUMMER SALE</em></strong></h2>
-                <h2 class="display-4 bg-text-light text-text-main text-center animatedJS"><strong><em>全館滿$999享折扣!!</em></strong></h2>
-                <h2 class="display-4 bg-text-light text-text-main text-center animatedJS"><strong><em>當月壽星結帳再95折!!</em></strong></h2>
+                <h2 class="display-4 bg-text-light text-text-main text-center animatedTop"><strong><em>SUMMER SALE</em></strong></h2>
+                <h2 class="display-4 bg-text-light text-text-main text-center animatedTop"><strong><em>全館滿$999享折扣!!</em></strong></h2>
+                <h2 class="display-4 bg-text-light text-text-main text-center animatedTop"><strong><em>當月壽星結帳再95折!!</em></strong></h2>
             </div>
         </div>
 
         <section class="about row d-flex justify-content-center align-items-center no-gutters">
-            <div class="col-10 col-md-2 text-center mr-md-5 animatedJS">
+            <div class="col-10 col-md-2 text-center mr-md-5 animatedTop">
                 <i class="frame fas fa-hourglass-half"></i>
                 <h2 class="mt-3">時間</h2>
                 <p class="mt-3">香薰蠟燭產品下單後現做，2-6工作天內發貨，預定可備註發貨日期，
                     不接受緊急訂單，若訂單在製作中，不接受退訂，請您諒解。忙碌中若無回覆，請耐心等待，我們將盡快為您服務。</p>
             </div>
-            <div class="col-10 col-md-2 text-center mt-4 mt-md-0 mr-md-5 animatedJS">
+            <div class="col-10 col-md-2 text-center mt-4 mt-md-0 mr-md-5 animatedTop">
                 <i class="frame fas fa-leaf"></i>
                 <h2 class="mt-3">純天然</h2>
                 <p class="mt-3">原材料為美國大豆蠟，由大豆製作而成，純天然材料，
                     不會釋放化學物質，燃燒更緩慢，溫和地釋放香味，
                     進口香料不含磷苯二甲酸，香味持久溫和，進口綿燭芯，不含鉛，燃燒更充分。</p>
             </div>
-            <div class="col-10 col-md-2  text-center mt-4 mt-md-0 mr-md-5 animatedJS">
+            <div class="col-10 col-md-2  text-center mt-4 mt-md-0 mr-md-5 animatedTop">
                 <i class="frame fab fa-bitbucket"></i>
                 <h2 class="mt-3">產品</h2>
                 <p class="mt-3">蠟燭產品皆為純手工製作，完全一樣是不存在的，也因此有其獨特性
@@ -158,7 +158,9 @@
 
         <section class="hero3 row justify-content-center align-items-center no-gutters">
             <div class="col-md-6 handMadeWrap d-flex flex-column justify-content-center align-items-center">
-                <button class="btn btn-main bntHand">了解更多</button>
+                <router-link class="bntHand" to="/class">
+                    <button class="btn btn-main">了解更多</button>
+                </router-link>
                 <p class="col-10 animatedLeft">帶上你的情人、朋友，一起來做一個屬於自己香味的蠟燭吧！靜靜地感受心靈的沉靜，
                     感受天然低溫大豆蠟的獨特觸感，彷彿洗去一天的疲憊....香氛蠟燭不僅僅是只有照明、香氛舒壓的功用，
                     它也是一個家飾、一種生活品味的呈現。等你來一起體驗它的獨特魅力！
@@ -184,27 +186,27 @@
         <section class="product row d-flex justify-content-center my-5 no-gutters">
             <div class="col-12">
                 <div class="row justify-content-center no-gutters">
-                    <div class="sale col-10 col-md-3 col-lg-2  mb-4 mb-md-0 mr-md-2 animatedJS">
+                    <div class="sale col-10 col-md-3 col-lg-2  mb-4 mb-md-0 mr-md-2 animatedTop">
                         <router-link to="/list" style="text-decoration:none">
                             <div class="inner">
-                                <a href="#" class="h1 text-center mt-4 text-info">夏日慶典</a>
+                                <a href="#" class="h1 text-center mt-4 text-info text-shadow">夏日慶典</a>
                                 <p>炎熱的夏日，來點降價小確幸解解煩悶吧！</p>
                             </div>
                         </router-link>
                     
                     </div>
-                    <div class="new col-10 col-md-3 col-lg-2 mb-4 mb-md-0 mr-md-2 animatedJS">
+                    <div class="new col-10 col-md-3 col-lg-2 mb-4 mb-md-0 mr-md-2 animatedTop">
                         <router-link to="/list" style="text-decoration:none">
                             <div class="inner">
-                                <a href="#" class="h1 text-center mt-4 ">最新上架</a>
+                                <a href="#" class="h1 text-center mt-4 text-shadow">最新上架</a>
                                 <p>新的心動：夏日的吉野櫻、南法小雛菊、紫色塔克拉</p>
                             </div>
                         </router-link>
                     </div>
-                    <div class="hot col-10 col-md-3 col-lg-2 animatedJS">
+                    <div class="hot col-10 col-md-3 col-lg-2 animatedTop">
                         <router-link to="/list" style="text-decoration:none">
                             <div class="inner">
-                                <a href="#" class="h1 text-center mt-4 ">人氣商品</a>
+                                <a href="#" class="h1 text-center mt-4 text-shadow">人氣商品</a>
                                 <p>特製水果蠟燭。你想讓誰加入成為他們的夥伴呢?</p>
                             </div>
                         </router-link>
@@ -231,6 +233,7 @@ export default {
         }
     },
     created(){
+        //this.isLoading = true;
         $(document).ready(function(){
             $('#top').click(function(e){
                 e.preventDefault();
@@ -244,6 +247,12 @@ export default {
                 $('.animatedJS').each(function(){
                     var thisPos = $(this).offset().top;
                     //console.log(thisPos);
+                    if((windowHeight + scrollPos) >= thisPos){
+                        $(this).addClass('fadeIn');
+                    }
+                });
+                $('.animatedTop').each(function(){
+                    var thisPos = $(this).offset().top;
                     if((windowHeight + scrollPos) >= thisPos){
                         $(this).addClass('fadeIn');
                     }

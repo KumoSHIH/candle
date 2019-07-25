@@ -213,8 +213,8 @@
 
 //hero2 parallax
 .hero2{ 
-    background: url(./assets/images/hero1.jpg) fixed ;
-    background-position: 10%;
+    background: url(./assets/images/bg6.jpg) fixed ;
+    background-position: center center;
     background-size: cover;
     height: 600px;
 }
@@ -327,7 +327,7 @@
     cursor: pointer;
 }
 .hot{
-    background: url(./assets/images/p4.jpg);
+    background: url(./assets/images/p0.jpg);
     background-size: cover;
     background-position: center center;
 }
@@ -341,13 +341,15 @@
     background-size: cover;
     background-position: center center;
 }
+.text-shadow{
+    text-shadow: 0px 5px 6px rgba(0,0,0,.5);
+}
 .inner{
     margin-top: 50%;
     color: #fff;
 
     a{
         text-decoration: none;
-        text-shadow: 0px 5px 5px rgba(0,0,0,.6);
         color: #fff;
         font-weight: bold;
         display: block;
@@ -367,7 +369,7 @@
 
 .hot:hover p,.sale:hover p,.new:hover p{
     clip-path: inset(0% 0% 0% 0%);
-    background-color: $text-light;
+    background-color: rgba(0,0,0,.5);
 }
 
 //animated
@@ -375,6 +377,11 @@
     opacity: 0;
     transition:  1.5s;
     transform: translateY(50px);
+}
+.animatedTop{
+    opacity: 0;
+    transition:  1.5s;
+    transform: translateY(150px);
 }
 .fadeIn{
     opacity: 1;

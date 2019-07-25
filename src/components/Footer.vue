@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="footer container-fluid bg-main">
-            <div class="row text-light">
+            <div class="row justify-content-center text-light">
                 <div class="col-md-4 d-flex flex-column text-center mt-5">
                     <h6>關於我們</h6>
                     <a href="#">實體店面</a>

@@ -11,11 +11,6 @@ import VeeValidate from 'vee-validate';
 import zhTW from 'vee-validate/dist/locale/zh_TW';
 import VueI18n from 'vue-i18n';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
 import App from './App';
 import router from './router';
 import './bus';
@@ -33,9 +28,6 @@ Vue.component("Loading", Loading); //全域方式載入此元件
 Vue.filter('currency', currencyFilter);
 Vue.filter('date',dateFilter);
 Vue.component('CandleLoading',CandleLoading);
-
-library.add(faSignInAlt,faUserPlus);
-Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 /* eslint-disable no-new */
 const i18n = new VueI18n({

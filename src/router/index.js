@@ -19,10 +19,20 @@ import CartAddress from '@/components/pages/CartAddress';
 import CartPay from '@/components/pages/CartPay';
 import CartFin from '@/components/pages/CartFin';
 import Bulletin from '@/components/pages/Bulletin';//公告
+import Controller from '@/components/pages/Controller';//管理員登入
+import Class from '@/components/pages/Class';
 
 Vue.use(Router)
 
 export default new Router({
+  scrollBehavior(to, from, savedPosition){
+    if(savedPosition){
+      return savedPosition
+    }else{
+      return { x:0 , y:0 }
+    }
+  },
+
   routes: [
     {
       path: '*',
@@ -73,6 +83,12 @@ export default new Router({
           name: "Bulletin",
           component: Bulletin,
         },
+        {
+          path: 'class',
+          name: "Class",
+          component: Class,
+        },
+        
       ]
     },
     
@@ -81,6 +97,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {
+      path: '/controller',
+      name: "Controller",
+      component: Controller,
     },
     {
       path: '/admin',

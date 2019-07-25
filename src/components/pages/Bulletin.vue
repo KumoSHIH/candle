@@ -4,7 +4,7 @@
         <div class="container pt-5">
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col-md-8 text-center ">
-                    <h2 class="text-main mt-4 mt-md-0"><strong>近期優惠活動</strong></h2>
+                    <h2 class="text-main mt-4 mt-md-0"><strong>8月優惠活動</strong></h2>
                     <hr>
                     <h6 class="text-text-light"><i class="fas fa-sun mr-2"></i>新加入會員首次購物享95折。</h6>
                     <h6 class="text-text-light"><i class="fas fa-sun mr-2"></i>當月壽星結帳可再折扣NT $50。</h6>

@@ -16,6 +16,16 @@ export default {
         Nav,
         Footer,
         Alert,
-    }
+    },
+    // created(){
+    //     window.onload = function(){
+    //         if(document.body.scrollTop > 0){
+    //             window.scrollTo(0, -1);
+    //             document.body.scrollTop = 0;
+    //         }
+    //         window.scrollTo(0, -1);
+    //         document.body.scrollTop = 0;
+    //     }
+    // }
 }
 </script>
