@@ -4,7 +4,7 @@
             <CandleLoading/>
         </loading>
         
-        <div class="cartWrap container pt-5">
+        <div class="cartWrap container pt-5"> 
             <div class="row no-gutters">
                 <div class="col-md-8 mt-5 no-gutters pr-md-4">
                     <h3 class="text-center text-main bg-text-main py-2 mb-4 mt-4 mt-md-0">我的購物車</h3>
