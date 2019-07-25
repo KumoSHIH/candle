@@ -15,14 +15,14 @@
             </div>
             
             <div class="row d-flex justify-content-center mt-3">
-                <div class="col-6 col-md-4 wrap text-center py-2">
+                <div class="col-7 col-md-4 wrap text-center py-2">
                     <div class="dashLine text-center">
                         <i class="fas fa-hand-holding-usd fa-4x text-info mt-3"></i>
                         <p class="h6 mt-3">結帳金額滿 999 (含)以上</p>
                         <p class="h6">輸入專屬優惠碼 , 即可享有優惠價!</p>
                     </div>
                 </div>
-                <div class="col-3 col-md-2 code text-center">
+                <div class="col-4 col-md-2 code text-center">
                     <div class="h1 mt-4 text-danger">
                         <strong>9折</strong>
                     </div>
@@ -34,14 +34,14 @@
                 <div class="grad"></div>
             </div>
             <div class="row d-flex justify-content-center my-5">
-                <div class="col-6 col-md-4 wrap text-center py-2">
+                <div class="col-7 col-md-4 wrap text-center py-2">
                     <div class="dashLine text-center">
                         <i class="fas fa-hand-holding-usd fa-4x text-info mt-3"></i>
                         <p class="h6 mt-3">結帳金額滿 1399 (含)以上</p>
                         <p class="h6">輸入專屬優惠碼 , 即可享有優惠價!</p>
                     </div>
                 </div>
-                <div class="col-3 col-md-2 code text-center">
+                <div class="col-4 col-md-2 code text-center">
                     <div class="h1 mt-4 text-danger">
                         <strong>8折</strong>
                     </div>

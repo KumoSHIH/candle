@@ -5,22 +5,22 @@
         </loading>
         
         <div class="cartWrap container pt-5">
-            <div class="row">
-                <div class="col-md-8 mt-5">
+            <div class="row no-gutters">
+                <div class="col-md-8 mt-5 no-gutters pr-md-4">
                     <h3 class="text-center text-main bg-text-main py-2 mb-4 mt-4 mt-md-0">我的購物車</h3>
                     <tr v-for="item in cart.carts" :key="item.id"
-                    class="d-flex justify-content-around align-items-center mb-3">
-                        <th width="20%" class="itemImg" :style="{backgroundImage:`url(${item.product.imageUrl})`}"></th>
-                        <th class="align-middle">{{item.product.title}}
+                    class="d-flex justify-content-md-around align-items-center mb-3">
+                        <th width="10%" class="itemImg" :style="{backgroundImage:`url(${item.product.imageUrl})`}"></th>
+                        <th width="30%" class="align-middle ml-2">{{item.product.title}}
                             <div class="text-success" v-if="item.coupon">已套用優惠券</div>
                         </th>
-                        <th width="5%">{{item.qty}}{{item.product.unit}}</th> 
-                        <th width="10%" >
+                        <th width="10%">{{item.qty}}{{item.product.unit}}</th> 
+                        <th width="20%" >
                             <div :class="{'delLine': item.coupon}">NT{{(item.product.price)*(item.qty) | currency}}</div> 
                             <div class="text-danger" v-if="item.coupon">NT{{ item.final_total | currency }}</div>
                         </th>
                         <th width="5%">
-                            <button class="btn text-main" @click="delCart(item.id)">
+                            <button class="btn text-main " @click="delCart(item.id)">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </th>
@@ -72,6 +72,12 @@
     }
     .delLine{
         text-decoration: line-through;
+    }
+    @media (max-width: 768px){
+        .itemImg{
+            width: 80px;
+            height: 80px;
+        }
     }
 </style>
     

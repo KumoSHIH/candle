@@ -43,7 +43,18 @@
         stroke-dashoffset: 0;
     }
 }
-@media (max-width: 375px) and(min-width: 319px){
+@media (max-width: 320px){
+    .svgWrap{
+        position: absolute;
+        top: 35%;
+        
+        svg{
+            width: 280px;
+            height: 55px ;
+        }
+    } 
+}
+@media (max-width: 375px) and(min-width: 321px){
     .svgWrap{
         position: absolute;
         top: 29%;
@@ -67,6 +78,7 @@
         }
     } 
 }
+
 
 
 //scrollTop
@@ -163,7 +175,23 @@
     bottom: -50px;
     animation-iteration-count: infinite;
 }
-@media (max-width: 375px) and(min-width: 319px){
+@media (max-width: 320px){
+    .hero1{
+        height: 680px;
+    }
+    .hero1bg{
+        width: 100%;
+        margin-top: 120px;
+    }
+    .introTxt{
+        margin-top: 250px;
+    }
+    .hero1Icon{
+        position: relative;
+        bottom: -40px;
+    }
+}
+@media (max-width: 375px) and(min-width: 321px){
     .hero1{
         height: 680px;
     }
@@ -229,14 +257,17 @@
     }
     
 }
-@media (max-width: 375px) and(min-width: 319px){
+@media (max-width: 416px) and(min-width: 319px){
     .hero2{
-        height: 900px;
+        height: 600px;
     }
-}
-@media(min-width: 376px) and (max-width:416px){
-    .hero2{
-        height: 800px;
+    .hero2Txt{
+        h2{
+            font-size: 40px;
+        }
+    }
+    h2:first-child{
+        margin-top: 20px;
     }
 }
 
