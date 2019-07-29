@@ -45,13 +45,14 @@
                     </div>
                     <div class="mt-4">
                         <label for="num" class="h6">數量</label>
-                        <select name="" id="num" v-model="product.num" class="form-control" >
+                        <select name="" id="num" v-model="product.buyNum" class="form-control" >
                             <option :value="num" v-for="num in 10" :key="num.id">
                                 選購 {{ num }} {{ product.unit }}
                             </option>
                         </select>
                     </div>
-                    <button class="btn btn-main mt-3 w-100" @click="addCart(product.id,product.num)">加入購物車</button>
+                    <button class="btn btn-main mt-3 w-100" @click="addCart(product.id,product.buyNum)">
+                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === product.id"></i>加入購物車</button>
                     <hr>
                     <p class="text-center text-md-left ">付款後，備貨到寄出商品為 2~6 個工作天。（不包含假日）</p>
                     <p class="text-center text-md-left ">統一發票中獎另會通知並寄送紙本發票</p>
@@ -122,6 +123,9 @@ export default {
             product: {},
             itemID: '',
             isLoading: false,
+            status:{  //判斷畫面上是哪一筆資料正在讀取中
+                loadingItem:'',
+            },
             
         }
     },
@@ -131,8 +135,8 @@ export default {
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
             vm.isLoading = true;
             vm.$http.get(api).then((response)=>{
-                //console.log(response.data);
                 vm.product = response.data.product;
+                vm.$set(vm.product, "buyNum", 1);
                 vm.isLoading = false;
             })
         },
@@ -143,10 +147,12 @@ export default {
                 product_id: id,
                 qty,
             }
+            vm.status.loadingItem = id;
             vm.$http.post(api,{ data: cart }).then((response)=>{
                 //console.log(response.data);
                 vm.$bus.$emit('updateCart');
                 vm.$bus.$emit('message:push', response.data.message,'success');
+                vm.status.loadingItem = '';
             })
         },
     },

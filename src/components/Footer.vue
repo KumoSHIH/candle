@@ -16,6 +16,7 @@
                 </div>
                 <div class="col-md-4 text-center mt-5">
                     <h6>聯絡我們</h6>
+                    <span>tel : 02-22345678</span>
                     <p>聯絡時間：AM 10:00~PM 17:00</p>
                     <a href="#"><i class="fab fa-facebook-square fa-3x mr-2"></i></a>
                     <a href="#"><i class="fab fa-instagram fa-3x mr-2"></i></a>

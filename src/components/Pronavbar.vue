@@ -5,7 +5,8 @@
                 <router-link class="nav-link" to="/list">全部商品</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/list">新品上市</router-link>
+                <a href="#" class="nav-link" @click.prevent="goItem('新品上市')">新品上市</a>
+                <!-- <router-link class="nav-link" to="/list">新品上市</router-link> -->
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/list">大豆蠟燭</router-link>
@@ -130,43 +131,13 @@ export default {
         }
     },
     methods: {
-        getProduct(){
+        goItem(name){
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
-            vm.isLoading = true;
-            vm.$http.get(api).then((response) =>{
-                //console.log(response.data);
-                vm.products = response.data.products;
-                //console.log(vm.products);
-                if(vm.listItem === '全部商品'){
-                    vm.filteredData = Object.assign({}, vm.products);
-                }else{
-                    vm.filteredData = vm.products.filter(function(item){
-                        if(item.category === vm.listItem){
-                            return true;
-                        }
-                    });
-                };
-                vm.isLoading = false;
-            });
-            
-        },
-        filterItem(name){
-            const vm = this;
-            //vm.$router.push('/list');
-            vm.listItem = name;
-            vm.getProduct(vm.filterName);
-            console.log(vm.filteredData);
-            vm.$bus.$on('toCategory', ()=>{
-                vm.getProduct();
-                
-            });
-            vm.$router.push('/list');
-            
+            vm.$bus.$emit('goFilterList',name);
         }
     },
     created(){
-        this.getProduct();
+        //this.getProduct();
     },
 }
 </script>

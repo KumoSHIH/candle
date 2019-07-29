@@ -113,6 +113,7 @@ export default {
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
             vm.$http.delete(api).then((response)=>{
                 //console.log(response);
+                vm.$bus.$emit('message:push', '已刪除商品', 'danger');
                 vm.$bus.$emit('updateCart');
                 vm.getCart();
             })

@@ -1,6 +1,7 @@
 <template>
     <div>
         <Nav/>
+        <Alert/>
         <router-view></router-view>
         <Footer/>
     </div>

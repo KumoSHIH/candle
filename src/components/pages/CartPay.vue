@@ -39,40 +39,54 @@
 
                 <div class="col-md-7 mt-5">
                     <h2 class="text-center text-main">付款</h2>
-                    <form class="candle-form mt-3">
+                    <form class="mt-3">
                         <div class="form-group">
                             <label for="card">信用卡卡號</label>
                             <input v-validate="'required'" name="card" :class="{'is-invalid': errors.has('card')}"
                             type="text" id="card" class="form-control" placeholder="1234-5678-9012-1234">
                             <span v-if="errors.has('card')" class="text-danger">請輸入正確卡號</span>
                         </div>
-                        <div class="form-group">
-                            <label for="firstName" class="">持卡人姓名</label>
-                            <div class="d-flex justify-content-between">
-                                <input v-validate="'required'" name="firstName" :class="{'is-invalid': errors.has('firstName')}"
-                                type="text" id="firstName" class="form-control col-md-6" placeholder="姓">
-                                
-                                <input v-validate="'required'" name="lastName" :class="{'is-invalid': errors.has('lastName')}"
-                                type="text" class="form-control col-md-6" placeholder="名">
-                            </div>
-                            <div class="d-flex">
-                                <span v-if="errors.has('firstName')" class="text-danger mr-2">請輸入姓</span>
-                                <span v-if="errors.has('lastName')" class="text-danger ">請輸入名字</span>    
-                            </div>
-                        </div>
+                        
 
-                        <div class="form-group">
-                            <label for="isAvailable">有效期限</label>
-                            <input v-validate="'required'" name="isAvailable" :class="{'is-invalide': errors.has('isAvailible')}"
-                            type="month" id="isAvailable" class="form-control" placeholder="年/月"> 
-                            <span v-if="errors.has('isAvailable')" class="text-danger">請輸入有效年/月</span>
-                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="firstName">持卡人姓氏</label>
+                                    <input v-validate="'required'" name="firstName" :class="{'is-invalid': errors.has('firstName')}"
+                                type="text" id="firstName" class="form-control " placeholder="姓">
+                                    <span v-if="errors.has('firstName')" class="text-danger mr-2">請輸入姓</span>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="last3">背面末三碼</label>
-                            <input v-validate="'required'" name="last3" :class="{'is-invalid': errors.has('last3')}"
-                            type="text" id="last3" class="form-control" placeholder="123"> 
-                            <span v-if="errors.has('last3')" class="text-danger">請輸入卡片背面末三碼</span>
+                            <div class="col-6 ">
+                                <div class="form-group">
+                                    <label for="firstName">持卡人名字</label>
+                                    <input v-validate="'required'" name="lastName" :class="{'is-invalid': errors.has('lastName')}"
+                                type="text" class="form-control " placeholder="名">
+                                    <span v-if="errors.has('lastName')" class="text-danger ">請輸入名字</span>    
+                                </div>
+                            </div>
+                        </div>        
+                            
+                        <div class="form-row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="isAvailable">有效期限</label>
+                                    <input v-validate="'required'" name="isAvailable" :class="{'is-invalide': errors.has('isAvailible')}"
+                                    type="month" id="isAvailable" class="form-control" placeholder="年/月"> 
+                                    <span v-if="errors.has('isAvailable')" class="text-danger">請輸入有效年/月</span>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="last3">背面末三碼</label>
+                                    <input v-validate="'required'" name="last3" :class="{'is-invalid': errors.has('last3')}"
+                                    type="text" id="last3" class="form-control" placeholder="123"> 
+                                    <span v-if="errors.has('last3')" class="text-danger">請輸入卡片背面末三碼</span>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -1,5 +1,8 @@
 <template>
     <div>
+        <loading :active.sync="isLoading">
+            <CandleLoading/>
+        </loading>
         <Nav/>
         <div class="bgImg"></div>
         <div class="container">
@@ -17,8 +20,8 @@
                         v-model="user.password">
                     </div>
                     <div class="form-group px-4">
-                        <input type="button" class="btn btn-outline-second form-control my-4" value="登入"
-                        @click.prevent="signIn" @keyup.enter="signIn">
+                        <button class="btn btn-outline-second form-control my-4" 
+                        @click.prevent="signIn" @keyup.enter="signIn">登入</button>
                     </div>
                 </div>
             </div>
@@ -56,17 +59,20 @@ export default {
             user:{
                 username: '',
                 password: '',
-            }
+            },
+            isLoading : false,
         };
     },
     methods:{
         signIn(){
             const api = `${process.env.APIPATH}/admin/signin`;
             const vm = this;
+            vm.isLoading = true;
             this.$http.post(api, vm.user).then((response) => {
-                console.log(response.data);
+                //console.log(response.data);
+                vm.isLoading = false;
                 if(response.data.success){
-                vm.$router.push('/admin/products'); 
+                    vm.$router.push('/admin/products'); 
                 }
             });
         },

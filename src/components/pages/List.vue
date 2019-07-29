@@ -57,7 +57,12 @@
                 
                 <div class="col-md-8 col-lg-9">
                     <div class="form-row justify-content-center justify-content-md-start mt-4 mt-md-0 mb-4">
-                        <div class="col-10 col-md-4 mb-4 mb-md-0" v-for="item in filteredData" :key="item.id">                            
+
+                        <!-- <div class="col-10 col-md-4 mb-4 mb-md-0" v-for="item in filteredData" :key="item.id">                            
+                            <Card :card-item="item" />
+                        </div> -->
+
+                        <div class="col-10 col-md-4 mb-4 mb-md-0" v-for="item in products" :key="item.id">                            
                             <Card :card-item="item" />
                         </div>
                         
@@ -185,58 +190,78 @@ export default {
         return{
             products: [],
             isLoading: false,
-            listItem : '全部商品',
-            filteredData : {},//過濾後的資料 
+            listItem : '',
+
+            //filteredData : {},//過濾後的資料 
             currentPage: 0,//目前所在的頁數
             pages: 0,
 
         }
     },
     methods:{
+        // getProduct(){
+        //     const vm = this;
+        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
+        //     vm.isLoading = true;
+        //     vm.$http.get(api).then((response) =>{
+        //         //console.log(response.data);
+        //         vm.products = response.data.products;
+        //         //console.log(vm.products); 
+        //         //vm.$bus.$emit('goFilterList');
+        //         if(vm.listItem === '全部商品'){
+        //             //vm.filteredData = Object.assign({}, vm.products);
+        //             vm.filteredData = vm.products;
+        //         }else{
+        //             vm.filteredData = vm.products.filter((item) => item.category === vm.listItem  
+        //             );
+        //         };
+        //         vm.isLoading = false;
+        //     });
+            
+        // },
+        
+        // filterItem(name){
+        //     //const newData = [];
+        //     const vm = this;
+        //     vm.listItem = name;
+        //     vm.getProduct(vm.listItem);
+            
+        //     // vm.filteredData.forEach((item,i)=>{
+        //     //     if(i % 9 ===0){
+        //     //         newData.push([]) //每九筆資料新增一個空陣列
+        //     //     }
+        //     //     const page = parseInt(i / 9)
+        //     //     newData[page].push(item)
+        //     // })
+        //     // vm.pages = newData.length;
+        //     // vm.currentPage = 0;
+        //     // return newData;
+            
+            
+        //     //console.log(vm.filteredData);
+        // }
         getProduct(){
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
             vm.isLoading = true;
             vm.$http.get(api).then((response) =>{
-                //console.log(response.data);
                 vm.products = response.data.products;
-                //console.log(vm.products); 
-                if(vm.listItem === '全部商品'){
-                    //vm.filteredData = Object.assign({}, vm.products);
-                    vm.filteredData = vm.products;
-                }else{
-                    vm.filteredData = vm.products.filter((item) => item.category === vm.listItem  
-                    );
-                };
                 vm.isLoading = false;
             });
             
         },
-        filterItem(name){
-            //const newData = [];
-            const vm = this;
-            vm.listItem = name;
-            vm.getProduct(vm.listItem);
-
-            // vm.filteredData.forEach((item,i)=>{
-            //     if(i % 9 ===0){
-            //         newData.push([]) //每九筆資料新增一個空陣列
-            //     }
-            //     const page = parseInt(i / 9)
-            //     newData[page].push(item)
-            // })
-            // vm.pages = newData.length;
-            // vm.currentPage = 0;
-            // return newData;
-            
-            
-            //console.log(vm.filteredData);
-        }
-        
         
     },
     computed:{
-        
+        filterItem(name){
+            const vm = this;
+            vm.listItem = name;
+            if(vm.listItem === '全部商品'){
+                return vm.products;
+            }else{
+                return vm.products.filter((item) => item.category === vm.listItem);
+            }
+        }   
     },
     created(){
         this.getProduct();

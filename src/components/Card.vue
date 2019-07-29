@@ -1,5 +1,7 @@
 <template>
     <div>
+        <loading :active.sync="isLoading"></loading>
+
         <div class="card h-100 border-0 mb-3">
             <div class="img-top" 
             @click="itemPage(cardItem.id)"
@@ -12,7 +14,7 @@
             <div class="card-footer d-flex justify-content-between align-items-baseline">
                 <div class="price h5">限時優惠 <strong class="text-danger">{{cardItem.price | currency}}</strong></div>
                 <button class="btnCart" @click="addCart(cardItem.id,cardItem.qty)"
-                ><i class="fas fa-shopping-cart"></i></button>
+                ><i class="fas fa-shopping-cart "></i></button>
             </div>
         </div>
 
@@ -85,7 +87,7 @@ export default {
     data(){
         return{
             cartDetail : [],
-
+            isLoading: false,
         }
     },
     methods:{
@@ -96,11 +98,13 @@ export default {
                 product_id : id,
                 qty,
             };
+            vm.isLoading = true;
             vm.$http.post(api, {data:cart}).then((response)=>{
                 vm.cartDetail = response.data.data;
                 //console.log(vm.cartDetail);
                 vm.$bus.$emit('updateCart');
                 vm.$bus.$emit('message:push', '已加入購物車', 'success');
+                vm.isLoading = false;
             })
         },
         itemPage(id){
